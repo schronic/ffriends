@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'faker', '~> 1.6', '>= 1.6.6'
+
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
@@ -31,5 +33,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
 end
