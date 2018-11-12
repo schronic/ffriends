@@ -4,6 +4,5 @@ class Friend < ApplicationRecord
 
   validates :slogan, presence: true, uniqueness: true
   validates :age, presence: true
-  validates :price
   mount_uploader :photo, PhotoUploader
 end
