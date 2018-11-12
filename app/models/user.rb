@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # mount_uploader :picture, PhotoUploader
+  mount_uploader :picture, PhotoUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

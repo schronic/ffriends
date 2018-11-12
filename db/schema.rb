@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_183754) do
+ActiveRecord::Schema.define(version: 2018_11_12_185828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "rating"
+    t.integer "strenght"
+    t.integer "agility"
+    t.integer "weight"
+    t.integer "height"
+    t.string "nationality"
+    t.bigint "user_id"
+    t.string "slogan"
+    t.integer "age"
+    t.string "picture"
+    t.integer "price"
+    t.integer "wins"
+    t.integer "losses"
+    t.string "description"
+    t.bigint "purchase_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_id"], name: "index_friends_on_purchase_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "total_price"
+    t.integer "confirmation_number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,4 +62,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_183754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friends", "purchases"
+  add_foreign_key "friends", "users"
+  add_foreign_key "purchases", "users"
 end
