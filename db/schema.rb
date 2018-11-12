@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_185828) do
 
   create_table "friends", force: :cascade do |t|
     t.integer "rating"
-    t.integer "strenght"
+    t.integer "strength"
     t.integer "agility"
     t.integer "weight"
     t.integer "height"

@@ -1,0 +1,15 @@
+<%= link_to 'Login', new_user_session_path %>
+
+<%= link_to 'New Friend', new_friend_path %>
+
+<ul>
+<% @friends.each do |friend| %>
+  <li>
+    <%= link_to friend.id, friend_path(friend) %>
+    <%= friend.slogan %>
+  </li>
+
+<% end %>
+</ul>
+
+
