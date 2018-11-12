@@ -1,0 +1,28 @@
+<div class="container">
+<div class="cards">
+  <div class="card">
+  <div class="row">
+    <% @friends.each do |friend| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/500x400/?friend');">
+          <span class="card-category"><%= friend.nationality %></span>
+          <div class="card-description">
+            <p><%= friend.slogan %></p>
+          </div>
+          <%= link_to "", friend_path(friend), class: 'card-link' %>
+        </div>
+        <div class="card-footer">
+            <p>ID <%= friend.id %> </p>
+            <p><%= friend.price %> € per day</p>
+            <p><%= friend.rating %></p>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
