@@ -1,10 +1,10 @@
 <%= simple_form_for @friend do |f| %>
   <%= f.error_notification %>
-  <%= f.input :rating %>
-  <%= f.input :strength %>
-  <%= f.input :weight %>
-  <%= f.input :height %>
-  <%= f.input :nationality %> <!-- Nationality collection -->
+  <%= f.input :rating, collection: Friend::RATING %>
+  <%= f.input :strength, collection: Friend::STRENGTH %>
+  <%= f.input :weight, collection: Friend::WEIGHT %>
+  <%= f.input :height, collection: Friend::HEIGHT %>
+  <%= f.input :nationality, collection: Friend::NATIONALITY %> <!-- Nationality collection -->
   <%= f.input :slogan %>
   <%= f.input :age %>
   <%= f.input :price %>
