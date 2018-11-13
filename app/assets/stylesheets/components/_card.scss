@@ -3,18 +3,21 @@
 // font-family: 'Roboto', sans-serif;
 
 .card-body {
-  height: 150px;
-  weight: 200px;
+  height: 200px;
+  weight: 150px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  border-raidus: 20px;
 }
 .card-description {
   position: absolute;
   bottom: 10px;
   left: 10px;
+  font-size: 18px;
+  font-family: Roboto;
 }
 .card-description {
   h2 {
@@ -33,6 +36,8 @@
   z-index: 2;
   background: black;
   opacity: 0;
+  font-size: 20px;
+
 }
 .card-link:hover {
   opacity: 0.1;
@@ -40,17 +45,37 @@
 .class-footer {
   p {
     text-size: 10px;
+
   }
 }
 
 .friend-rating{
-
+  font-size: 14px;
+  line-height: normal !important;
+  max-height: 22px !important;
+  text-overflow: ellipsis !important;
 }
 
 .friend-price{
+  margin: 0 0 2px;
+  font-size:14px;
+  padding:0;
+  font-size: 14px;
 
 }
 
 .friend-number{
+  font-weight: lighter;
+  font-family: Roboto;
+  font-size: 16px;
+  margin-bottom: 0;
 
+}
+
+.friend-slogan{
+  font-weight:bold;
+  font-family: Roboto;
+  font-size: 14px;
+  margin-top:0px;
+  margin-bottom:0px;
 }
