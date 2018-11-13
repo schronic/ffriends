@@ -39,7 +39,6 @@ class FriendsController < ApplicationController
     @friend.destroy
     redirect_to friends_path
   end
-
 private
 
   def set_friend
