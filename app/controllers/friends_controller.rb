@@ -3,20 +3,23 @@ class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @friends = Friend.all
+    @friends = policy_scope(Friend).order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @friend = Friend.new
+    @friend = current_user.friends.new
   end
 
   def create
-    @friend = Friend.new(friend_params)
-    @friend.user = current_user
-    @friend.save
+    @friend = current_user.friends.new(friend_params)
+    authorize @friend
+    if @friend.save
+      redirect_to @friend
+    else render :new
+    end
     redirect_to @friend
   end
 
@@ -25,7 +28,10 @@ class FriendsController < ApplicationController
 
   def update
     @friend.update(friend_params)
-    redirect_to @friend
+    if @friend.save
+      redirect_to @friend
+    else render :edit
+    end
   end
 
   def destroy
@@ -37,6 +43,7 @@ private
 
   def set_friend
     @friend = Friend.find(params[:id])
+    authorize @friend
   end
 
   def friend_params
