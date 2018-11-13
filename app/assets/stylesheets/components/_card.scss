@@ -1,6 +1,10 @@
-.card {
-  height: 70px;
-  weight: 150px;
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Roboto', sans-serif;
+
+.card-body {
+  height: 150px;
+  weight: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
@@ -12,8 +16,13 @@
   bottom: 10px;
   left: 10px;
 }
-.card-description h2 {
+.card-description {
+  h2 {
   font-size: 24px;
+  }
+  p {
+    font-size: 17px;
+  }
 }
 .card-link {
   position: absolute;
@@ -29,5 +38,19 @@
   opacity: 0.1;
 }
 .class-footer {
+  p {
+    text-size: 10px;
+  }
+}
+
+.friend-rating{
+
+}
+
+.friend-price{
+
+}
+
+.friend-number{
 
 }
