@@ -2,10 +2,10 @@ class CreateFriends < ActiveRecord::Migration[5.2]
   def change
     create_table :friends do |t|
       t.integer :rating
-      t.integer :strength
-      t.integer :agility
-      t.integer :weight
-      t.integer :height
+      t.string :strength
+      t.string :agility
+      t.string :weight
+      t.string :height
       t.string :nationality
       t.references :user, foreign_key: true
       t.string :slogan
