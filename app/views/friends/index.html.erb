@@ -1,13 +1,15 @@
-<%= link_to 'New Friend', new_friend_path %>
+<% if policy(Friend).create? %>
+  <%= link_to 'New Friend', new_friend_path %>
+<% end %>
 
 <ul>
-<% @friends.each do |friend| %>
+  <% @friends.each do |friend| %>
   <li>
     <%= link_to friend.id, friend_path(friend) %>
     <%= friend.slogan %>
   </li>
 
-<% end %>
+  <% end %>
 </ul>
 
 <%= render '/layouts/card' %>
