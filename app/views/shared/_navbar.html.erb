@@ -1,9 +1,14 @@
 <div class="navbar-wagon">
   <!-- Logo -->
+<div class="left">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
   <%= image_tag "fight.jpeg", height: 50 %>
   <% end %>
-
+  <%= simple_form_for(friends_path) do %>
+    <%= text_field_tag :Search %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+</div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -11,6 +16,9 @@
 
       <!-- Links when logged in -->
       <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to 'Help', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to 'Shoppingcart', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
