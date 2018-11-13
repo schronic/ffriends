@@ -1,6 +1,27 @@
-<%= link_to 'New Friend', new_friend_path %>
 
-<ul>
+<div class="cat-parent">
+  <div class="cat-container">
+    <div class="cat-filter-container">
+      <div class="cat-filter">
+        <div class="cat-filter-head">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container" >
+<%= render '/layouts/card' %>
+
+</div>
+
+
+
+<!-- <ul>
 <% @friends.each do |friend| %>
   <li>
     <%= link_to friend.id, friend_path(friend) %>
@@ -8,6 +29,10 @@
   </li>
 
 <% end %>
-</ul>
+</ul> -->
+
+
+
+
 
 

@@ -1,0 +1,16 @@
+<%= simple_form_for @friend do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :strength %>
+  <%= f.input :weight %>
+  <%= f.input :height %>
+  <%= f.input :nationality %> <!-- Nationality collection -->
+  <%= f.input :slogan %>
+  <%= f.input :age %>
+  <%= f.input :price %>
+  <%= f.input :picture %>
+  <%= f.input :picture_cache, as: :hidden %>
+  <%= f.input :wins %>
+  <%= f.input :losses %>
+  <%= f.input :description %>
+  <%= f.button :submit, "Upload Friend", class: 'btn button-primary button-lg'%>
+<% end %>
