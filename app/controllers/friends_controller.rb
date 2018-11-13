@@ -4,6 +4,7 @@ class FriendsController < ApplicationController
 
   def index
     @friends = policy_scope(Friend).order(created_at: :desc)
+    # @friends = Friend.all
   end
 
   def show

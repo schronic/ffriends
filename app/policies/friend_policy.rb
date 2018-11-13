@@ -5,8 +5,12 @@ class FriendPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def create?
-    current_user_or_admin?
+    true
   end
 
   def update?
@@ -20,6 +24,7 @@ class FriendPolicy < ApplicationPolicy
   private
 
   def current_user_or_admin?
-    record.user == user || user.admin? if user.present?
+    record.user == user || user.admin?
+    # true
   end
 end
