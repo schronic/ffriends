@@ -25,7 +25,7 @@ rand(4).times do
     )
   rand(5).times do
     friend = Friend.create!(
-      rating: Faker::Number.between(1, 10),
+      rating: Faker::Number.between(1, 5),
       strength: Faker::Number.between(1, 10),
       agility: Faker::Number.between(1, 10),
       weight: Faker::Number.between(1, 10),
