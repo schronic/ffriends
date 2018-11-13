@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_160045) do
 
   create_table "purchases", force: :cascade do |t|
     t.integer "total_price"
+    t.integer "confirmation_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

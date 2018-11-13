@@ -1,15 +1,18 @@
 <% if policy(Friend).create? %>
-  <%= link_to 'New Friend', new_friend_path %>
+  <%= link_to 'Make New Friend', new_friend_path %>
 <% end %>
 
-<ul>
-  <% @friends.each do |friend| %>
-  <li>
-    <%= link_to friend.id, friend_path(friend) %>
-    <%= friend.slogan %>
-  </li>
+<div class="cat-parent">
+  <div class="cat-container">
+    <div class="cat-filter-container">
+      <div class="cat-filter">
+        <div class="cat-filter-head">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <% end %>
-</ul>
-
-<%= render '/layouts/card' %>
+<div class="container" >
+  <%= render '/layouts/card' %>
+</div>
