@@ -1,15 +1,91 @@
-
 <div class="cat-parent">
-  <div class="cat-container">
-    <div class="cat-filter-container">
-      <div class="cat-filter">
-        <div class="cat-filter-head">
+ <div class="cat-container">
+   <div class="row">
+   <span class="cat_main">Find friends fighters</span>
+   <br>
+      <div class="col-xs-12 col-sm-4">
+        <div class="cat-filter-container">
+           <div class="cat-filter-head" >
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Agility
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">extreme fast</a></li>
+                  <li><a href="#">quick</a></li>
+                  <li><a href="#">usual</a></li>
+                  <li><a href="#">slow</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="filter-save-btn"><a href="#">Save</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="cat-filter-container">
+           <div class="cat-filter-head" >
+
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Strength
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">"Hulk"</a></li>
+                  <li><a href="#">Strong</a></li>
+                  <li><a href="#">Weak</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="filter-save-btn"><a href="#">Save</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="cat-filter-container">
+            <div class="cat-filter-head" >
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Weight
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">overweight</a></li>
+                  <li><a href="#">heavy</a></li>
+                  <li><a href="#">athletic</a></li>
+                  <li><a href="#">slim</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="filter-save-btn"><a href="#">Save</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="cat-filter-container">
+           <div class="cat-filter-head" >
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Height
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">giant</a></li>
+                  <li><a href="#">tall</a></li>
+                  <li><a href="#">normal</a></li>
+                  <li><a href="#">small</a></li>
+                  <li><a href="#">dwarf</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="filter-save-btn"><a href="#">Save</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container" >
-  <%= render '/layouts/card' %>
-</div>
+<%= render '/layouts/card' %>
