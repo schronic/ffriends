@@ -10,17 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_160045) do
+ActiveRecord::Schema.define(version: 2018_11_13_212454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_carts_on_friend_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "friends", force: :cascade do |t|
     t.integer "rating"
-    t.integer "strength"
-    t.integer "agility"
-    t.integer "weight"
-    t.integer "height"
+    t.string "strength"
+    t.string "agility"
+    t.string "weight"
+    t.string "height"
     t.string "nationality"
     t.bigint "user_id"
     t.string "slogan"
@@ -62,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_11_13_160045) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "friends"
+  add_foreign_key "carts", "users"
   add_foreign_key "friends", "purchases"
   add_foreign_key "friends", "users"
   add_foreign_key "purchases", "users"

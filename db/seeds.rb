@@ -28,7 +28,7 @@ rand(4).times do
       height: Faker::Number.between(1, 10),
       nationality: 'Germany',
       user: user,
-      slogan: 'Faker::String.random(10..79)',
+      slogan: Faker::String.random(10..79),
       age: Faker::Number.between(5, 90),
       price: Faker::Number.between(1, 200),
       wins: Faker::Number.between(1, 10),
