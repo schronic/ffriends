@@ -20,6 +20,6 @@ class FriendPolicy < ApplicationPolicy
   private
 
   def current_user_or_admin?
-    record.user == user || admin?
+    record.user == user || user.admin? if user.present?
   end
 end
