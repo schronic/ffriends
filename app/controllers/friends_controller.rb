@@ -11,6 +11,7 @@ class FriendsController < ApplicationController
 
   def new
     @friend = current_user.friends.new
+    authorize @friend
   end
 
   def create

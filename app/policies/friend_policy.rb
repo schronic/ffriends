@@ -5,8 +5,12 @@ class FriendPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def create?
-    current_user_or_admin?
+    true
   end
 
   def update?
