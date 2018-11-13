@@ -1,63 +1,65 @@
 <div class="container" id="description">
-<h2>Fiend ID: <%= @friend.id %></h2>
+  <h2>Fiend ID: <%= @friend.id %></h2>
+
 <div class="row">
-  <div class="col-md-6" >
-    <% if @friend.picture.present? %>
-      <div  style="margin-top: 10px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path friend.picture, height: 600, width: 400, crop: :fill %>')"></div>
-    <% else %>
-      <div style="margin-top: 10px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/400/600')">
-    <% end %></div>
-  </div>
-
-  <div class="col-md-6" id="friend-description">
-    <div>
-      <h3><%= @friend.slogan %></h3>
-      <h4> $ <%= @friend.price %> .00</h4>
-
-      <button type="button" class="btn btn-danger btn-lg">Add to cart</button>
-
-      <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
-      <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
-
-    </div>
-  </div>
-</div>
-
-  <div class="row" >
-    <div class="col-md-6" id="details">
-  <div class="nav-tabs-wrapper">
-    <ul class="nav nav-tabs" id="myTabs2" role="tablist">
-      <li role="presentation" class="active"><a href="#home2" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
-      <li role="presentation"><a href="#profile2" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Size & Fit</a></li>
-      <li role="presentation"><a href="#dropdown12" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile"> Reviews </a></li>
-      <li class="nav-underline" role="presentation"></li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent2">
-      <div class="tab-pane fade in active" role="tabpanel" id="home2" aria-labelledby="home-tab">
-        <p><strong>Description:</strong> <%= @friend.description %></p>
-        <p><strong>Nationality:</strong> <%= @friend.nationality %></p>
-        <p><strong>Slogan:</strong> <%= @friend.slogan %></p>
-        <p><strong>Age:</strong> <%= @friend.age %></p>
-        <p><strong>Height:</strong> <%= @friend.height %></p>
-      <p><strong>Weight:</strong> <%= @friend.weight %></p>
+  <div class="col-md-6">
+    <div class="row">
+      <div style="padding: 0px 50px">
+        <% if @friend.picture.present? %>
+        <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@friend.picture) %>);">
+          <% else %>
+          <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/600/200/?random');">
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div class="tab-pane fade" role="tabpanel" id="profile2" aria-labelledby="profile-tab">
-      <p><strong>Strength:</strong> <%= @friend.strength %></p>
-      <p><strong>Agility:</strong> <%= @friend.agility %></p>
-      <p><strong>Rating:</strong> <%= @friend.rating %></p>
-      <p><strong>Wins:</strong> <%= @friend.wins %> <strong>Losses:</strong> <%= @friend.losses %></p>
+      <div class="row" id="details" style="margin-top: 15px;">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" id="myTabs2" role="tablist">
+              <li role="presentation" class="active"><a href="#home2" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
+              <li role="presentation"><a href="#profile2" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Size & Fit</a></li>
+              <li role="presentation"><a href="#dropdown12" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile"> Reviews </a></li>
+              <li class="nav-underline" role="presentation"></li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent2">
+              <div class="tab-pane fade in active" role="tabpanel" id="home2" aria-labelledby="home-tab">
+                <p><strong>Description:</strong> <%= @friend.description %></p>
+                <p><strong>Nationality:</strong> <%= @friend.nationality %></p>
+                <p><strong>Slogan:</strong> <%= @friend.slogan %></p>
+                <p><strong>Age:</strong> <%= @friend.age %></p>
+                <p><strong>Height:</strong> <%= @friend.height %></p>
+                <p><strong>Weight:</strong> <%= @friend.weight %></p>
+              </div>
+              <div class="tab-pane fade" role="tabpanel" id="profile2" aria-labelledby="profile-tab">
+                <p><strong>Strength:</strong> <%= @friend.strength %></p>
+                <p><strong>Agility:</strong> <%= @friend.agility %></p>
+                <p class="friend-rating"><strong>Rating: </strong>
+                  <% @friend.rating.times do %>
+                  <i class="fas fa-star full"></i>
+                  <% end %>
+                  <% 5 - @friend.rating.times do %>
+                  <i class="far fa-star emtpy"></i>
+                  <% end %></p>
+                  <p><strong>Wins:</strong> <%= @friend.wins %> <strong>/ Losses:</strong> <%= @friend.losses %></p>
+                </div>
+                <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
+                  <p>Reviews</p>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-      <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
-        <p>Reviews</p>
+
+      <div class="col-md-6" id="friend-description">
+        <div>
+          <h3><%= @friend.slogan %></h3>
+          <h4> $ <%= @friend.price %> .00</h4>
+          <button type="button" class="btn btn-danger btn-lg">Add to cart</button>
+          <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
+          <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
+        </div>
       </div>
     </div>
-  </div>
     </div>
-    <div class="col-md-6" style="border:1px solid red;">
-
-    </div>
-
-  </div>
-
 </div>
