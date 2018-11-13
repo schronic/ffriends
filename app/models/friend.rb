@@ -1,6 +1,6 @@
 class Friend < ApplicationRecord
   belongs_to :user
-  belongs_to :purchase
+  belongs_to :purchase, optional: true
 
   validates :slogan, presence: true
   validates :price, presence: true
