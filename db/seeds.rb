@@ -1,23 +1,19 @@
-
-puts "Starting seeding process!"
-
-puts "Destroy all old data..."
+puts "Starting the seed..."
+puts "Destroying old data..."
+puts "Creating new users..."
 
 User.destroy_all
 Friend.destroy_all
 Purchase.destroy_all
 
-
-
 10.times do
 user = User.create!(
   email: Faker::Internet.free_email,
-  password: Faker::Internet.password,
+  password: "ffriends",
   address: Faker::Address.street_address,
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name
   )
-
 rand(4).times do
   purchase = Purchase.create(
     total_price: Faker::Number.decimal(3, 2),
@@ -43,3 +39,4 @@ rand(4).times do
     end
   end
 end
+puts "10 Users were just created, each with some purchases of friends!"
