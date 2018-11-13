@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @friends = policy_scope(Friend).all
+    @friends = policy_scope(Friend).order(created_at: :desc)
   end
 
   def show

@@ -6,20 +6,20 @@ class FriendPolicy < ApplicationPolicy
   end
 
   def create?
-    belongs_to_user?
+    current_user_or_admin?
   end
 
   def update?
-    belongs_to_user?
+    current_user_or_admin?
   end
 
   def destroy?
-    belongs_to_user?
+    current_user_or_admin?
   end
 
   private
 
-  def belongs_to_user?
-    record.user == user
+  def current_user_or_admin?
+    record.user == user || admin?
   end
 end
