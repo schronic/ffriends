@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2018_11_13_212454) do
 
   create_table "friends", force: :cascade do |t|
     t.integer "rating"
-    t.string "strength"
-    t.string "agility"
-    t.string "weight"
-    t.string "height"
+    t.integer "strength"
+    t.integer "agility"
+    t.integer "weight"
+    t.integer "height"
     t.string "nationality"
     t.bigint "user_id"
     t.string "slogan"
