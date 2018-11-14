@@ -5,7 +5,8 @@ class FriendsController < ApplicationController
 
 def index
   if params[:term]
-    @friends = Friend.where(id: params[:term])
+    @friends = policy_scope(Friend).order(created_at: :asc)
+    @friends = Friend.where(params[:term].to_sym => params[:attr])
   else
     @friends = policy_scope(Friend).order(created_at: :asc)
   end
@@ -56,6 +57,6 @@ private
     params.require(:friend).permit(:rating, :strength,
       :agility, :weight, :height, :nationality,
       :user_id, :slogan, :age, :picture, :price,
-      :wins, :losses, :description, :purchase_id, :term)
+      :wins, :losses, :description, :purchase_id, :term, :attr)
   end
 end
