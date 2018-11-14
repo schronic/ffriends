@@ -21,9 +21,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to @reservation.friend
     else
-      render html: "You received the following error: <em>#{
-      @reservation.errors.full_messages
-      }</em>"
+      render html: "<h1>You received the following error:</h1>
+      <h3><em>#{@reservation.errors.full_messages}</em></h3>".html_safe
     end
   end
 
