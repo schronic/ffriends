@@ -55,7 +55,6 @@
         <div>
           <h3><%= @friend.slogan %></h3>
           <h4> $ <%= @friend.price %> .00</h4>
-<% console %>
           <% if current_user %>
             <%= simple_form_for @reservation, url: reservations_path, method: :post do |f| %>
               <%= f.error_notification %>
@@ -65,7 +64,7 @@
             <% end %>
           <% else %>
             <div class='btn btn-danger btn-lg'>
-              'Add to cart'
+              Add to cart
             </div>
           <% end %>
 
