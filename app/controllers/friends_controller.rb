@@ -12,6 +12,7 @@ def index
 end
 
   def show
+    @reservation = Reservation.new
   end
 
   def new

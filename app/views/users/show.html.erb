@@ -1,0 +1,26 @@
+<div class="container">
+      <div class="profile text-center">
+        <div class="main">
+          <div class="main-content">
+            <img src="" alt="" width="150" class="img-circle">
+            <h2><%= user.name %></h2>
+          </div>
+        </div>
+        <% @user.friends.each do |friend| %>
+        <div class="stat">
+          <div class="stat-content">
+            <h3><%= friend.id %></h3>
+            <p><%=friend.slogan %></p>
+          </div>
+        </div>
+        <% end  %>
+        <div class="description">
+          <div class="description-content">
+            <h3>More about <%= user.name %></h3>
+            <p class="text-justify">
+              I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them? Confused with agencies' or freelances' quotes? No clue when a developer is talking? Time to learn to code with Le Wagon with a 9-week intensive and immersive bootcamp!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>

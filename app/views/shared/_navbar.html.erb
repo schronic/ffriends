@@ -2,11 +2,14 @@
   <!-- Logo -->
 <div class="left">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "fight.jpeg", height: 50 %>
+  <%= image_tag "mask.png", height: 50 %>
   <% end %>
-<%= form_tag(friends_path, method: :get) do %>
+
+<%= form_tag(friends_path, method: :get, class: 'search-bar') do %>
   <%= text_field_tag :term %>
-  <%= submit_tag 'Search' %>
+  <button type="submit" class="btn-search">
+    <i class="fas fa-search"></i>
+  </button>
 <% end %>
 </div>
 
