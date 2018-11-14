@@ -1,26 +1,69 @@
-<div class="container">
-      <div class="profile text-center">
-        <div class="main">
-          <div class="main-content">
-            <img src="" alt="" width="150" class="img-circle">
-            <h2><%= user.name %></h2>
+<!-- CONTENT FOR -->
+
+<div id="user-show">
+  <div class="container table-container">
+    <div class="row table-row">
+    <div class="col-xs-12 col-md-4 table-col">
+      <!-- PROFILE -->
+      <div id="user-profile">
+        <!-- PROFILE CONTENT -->
+        <div class="style-user-profile">
+          <% avatar =  current_user.picture.present? ?current_user.picture : "http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png" %>
+          <%= cl_image_tag(avatar, width: 150, height: 150, class: "img-circle") %>
+          <h1><%= @user.first_name %></h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-8 table-col">
+      <!-- INFORMATION -->
+      <div class="user-info">
+        <!-- CARD INFORMATION -->
+        <div class="user-card-info">
+          <!-- CARD TITLE / ACCOUNT INFO-->
+          <div class="user-card-title">
+            <h2>ACCOUNT INFO</h2>
+            <%= link_to "Edit", edit_user_registration_path %>
+          </div>
+          <!-- CARD DETAILS -->
+          <div class="user-card-details">
+            <p><%= @user.first_name %> <%= @user.last_name %></p>
+            <p><%= @user.email %></p>
           </div>
         </div>
-        <% @user.friends.each do |friend| %>
-        <div class="stat">
-          <div class="stat-content">
-            <h3><%= friend.id %></h3>
-            <p><%=friend.slogan %></p>
+
+        <!-- CARD INFORMATION -->
+        <div class="user-info">
+          <div class="user-card-info">
+          <!-- CARD TITLE / ADDRESS-->
+          <div class="user-card-title">
+            <h2>ADDRESSES & PAYMENTS</h2>
+            <%= link_to "Edit", edit_user_registration_path %>
+          </div>
+          <!-- CARD DETAILS -->
+          <div class="user-card-details">
+            <p><%= @user.first_name %> <%= @user.last_name %></p>
+            <p><%= @user.address %></p>
+          </div>
           </div>
         </div>
-        <% end  %>
-        <div class="description">
-          <div class="description-content">
-            <h3>More about <%= user.name %></h3>
-            <p class="text-justify">
-              I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them? Confused with agencies' or freelances' quotes? No clue when a developer is talking? Time to learn to code with Le Wagon with a 9-week intensive and immersive bootcamp!
-            </p>
+
+      <div class="user-info">
+        <!-- CARD INFORMATION -->
+        <div class="user-card-info">
+          <!-- CARD TITLE / ARENAS-->
+          <div class="user-card-title">
+            <h2>YOUR ARENAS</h2>
+            <%= link_to "Edit", edit_user_registration_path %>
+          </div>
+          <!-- CARD DETAILS -->
+          <div class="user-card-details">
+            <p>You have not saved a favorite arena</p>
+            <p></p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+  </div>
+</div>
