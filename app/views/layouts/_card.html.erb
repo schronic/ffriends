@@ -8,7 +8,7 @@
       <% if friend.picture.present? %>
         <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(friend.picture) %>);">
       <% else %>
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= friend.picture %>);">
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/600/200/?random');">
       <% end %>
   <div class="card-description">
         <p class="friend-number">ID <%= friend.id %> </p>
