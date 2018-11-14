@@ -26,7 +26,6 @@ end
       redirect_to @friend
     else render :new
     end
-    redirect_to @friend
   end
 
   def edit

@@ -1,19 +1,19 @@
 <div class="container" id="description">
   <h2>Friend ID: <%= @friend.id %></h2>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="row">
-      <div style="padding: 0px 50px">
-        <% if @friend.picture.present? %>
-        <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@friend.picture) %>); background-size: cover; background-position: center;">
-          <% else %>
-          <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/600/200/?random');">
-            <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div style="padding: 0px 50px">
+          <% if @friend.picture.present? %>
+          <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@friend.picture) %>); background-size: cover; background-position: center;">
+            <% else %>
+            <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/600/200/?random');">
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row" id="details" style="margin-top: 15px;">
+        <div class="row" id="details" style="margin-top: 15px;">
           <div class="nav-tabs-wrapper">
             <ul class="nav nav-tabs" id="myTabs2" role="tablist">
               <li role="presentation" class="active"><a href="#home2" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
@@ -49,17 +49,23 @@
               </div>
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="col-md-6" id="friend-description">
-        <div>
+        <div class="col-md-6" id="friend-description">
           <h3><%= @friend.slogan %></h3>
           <h4> $ <%= @friend.price %> .00</h4>
           <button type="button" class="btn btn-danger btn-lg">Add to cart</button>
           <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
           <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
+          <p style="margin-top: 20px;">
+            <% if policy(@friend).edit? %>
+            <%= link_to "Edit", edit_friend_path(@friend) %>
+            <% end %>
+            <% if policy(@friend).destroy? %>
+            <%= link_to "Delete", friend_path(@friend), method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>
-    </div>
-</div>
+  </div>
