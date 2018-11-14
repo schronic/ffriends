@@ -14,6 +14,7 @@ end
 
   def show
     @reservation = Reservation.new
+    @user = User.find(@friend.user_id)
   end
 
   def new

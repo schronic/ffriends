@@ -1,11 +1,10 @@
 <div class="cat-parent">
  <div class="cat-container">
   <h1>
-  <a href="" class="typewrite" data-period="2000" data-type='[ "Find Friends Fighters" ]'>
-    <span class="wrap"></span>
-  </a>
+    <a href="" class="typewrite" data-period="2000" data-type='[ "Find Friends Fighters" ]'>
+      <span class="wrap"></span>
+    </a>
   </h1>
-
   <div class="container">
    <div class="row">
      <div class="col-xs-12 col-sm-4">
@@ -21,10 +20,8 @@
           <% end %>
         </ul>
       </div>
-
     </div>
     <div class="col-xs-12 col-sm-4">
-
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Height
@@ -36,10 +33,8 @@
           <% end %>
         </ul>
       </div>
-
     </div>
-       <div class="col-xs-12 col-sm-4">
-
+    <div class="col-xs-12 col-sm-4">
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Strenght
@@ -50,12 +45,9 @@
           <li class="category"><%= link_to s, friends_path(attr: s, term: 'strength') %></li>
           <% end %>
         </ul>
-
+      </div>
     </div>
-    </div>
-    <br>
     <div class="col-xs-12 col-sm-4">
-
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Agility
@@ -67,11 +59,35 @@
           <% end %>
         </ul>
       </div>
+    </div>
+        <div class="col-xs-12 col-sm-4">
+      <div class="dropdown category-handler">
+        <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Rating
+          <span class="caret"></span>
+        </p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <% Friend::RATING.each do |a| %>
+          <li class="category"><%= link_to a, friends_path(attr: a, term: 'rating') %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+        <div class="col-xs-12 col-sm-4">
+      <div class="dropdown category-handler">
+        <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Nationality
+          <span class="caret"></span>
+        </p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <% Friend::NATIONALITY.each do |a| %>
+          <li class="category"><%= link_to a, friends_path(attr: a, term: 'nationality') %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </div>
-  </div>
-</div>
-</div>
-</div>
 
 <%= render '/layouts/card' %>
