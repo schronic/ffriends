@@ -11,12 +11,13 @@
     <div class="col-md-12"><%= f.input :slogan %></div>
   </div>
   <div class="row">
+    <div class="col-md-12"><%= f.input :agility, collection: Friend::AGILITY %></div>
+  </div>
+  <div class="row">
     <div class="col-md-3"><%= f.input :rating, collection: Friend::RATING %></div>
     <div class="col-md-3"><%= f.input :strength, collection: Friend::STRENGTH %></div>
     <div class="col-md-3"><%= f.input :weight, collection: Friend::WEIGHT %></div>
     <div class="col-md-3"><%= f.input :height, collection: Friend::HEIGHT %></div>
-    <div class="col-md-3"><%= f.input :agility, collection: Friend::AGILITY %></div>
-
   </div>
   <div class="row">
     <div class="col-md-3"><%= f.input :age %></div>
@@ -27,8 +28,8 @@
 
   <%= f.input :picture %>
   <%= f.input :picture_cache, as: :hidden %>
-
   <%= f.button :submit, "Upload Friend", class: 'btn button-primary button-lg'%>
   <% end %>
+  <% console %>
 </div>
 

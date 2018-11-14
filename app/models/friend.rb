@@ -265,9 +265,8 @@ class Friend < ApplicationRecord
   validates :strength, inclusion: { in: STRENGTH}
   validates :weight, inclusion: { in: WEIGHT}
   validates :height, inclusion: { in: HEIGHT}
-  validates :agility, inclusion: { in: AGILITY}
+  validates :agility, presence:true, inclusion: { in: AGILITY}
   validates :nationality, inclusion: { in: NATIONALITY}
-
 
 
   mount_uploader :picture, PhotoUploader
