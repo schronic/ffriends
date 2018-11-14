@@ -55,7 +55,20 @@
         <div>
           <h3><%= @friend.slogan %></h3>
           <h4> $ <%= @friend.price %> .00</h4>
-          <button type="button" class="btn btn-danger btn-lg">Add to cart</button>
+          <% if current_user %>
+            <%= simple_form_for @reservation, url: reservations_path, method: :post do |f| %>
+              <%= f.error_notification %>
+              <%= f.hidden_field :user, value: current_user.id %>
+              <%= f.hidden_field :friend_id, value: @friend.id %>
+              <%= f.button :submit, 'Add to cart', class: 'btn btn-danger btn-lg' %>
+            <% end %>
+          <% else %>
+            <div class='btn btn-danger btn-lg'>
+              Add to cart
+            </div>
+          <% end %>
+
+
           <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
           <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
         </div>
