@@ -5,20 +5,20 @@
     <span class="wrap"></span>
   </a>
   </h1>
+
   <div class="container">
    <div class="row">
      <div class="col-xs-12 col-sm-4">
 
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Agility
+          Weight
           <span class="caret"></span>
         </p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li class="category"><a href="#">Extreme fast</a></li>
-          <li class="category"><a href="#">Quick</a></li>
-          <li class="category"><a href="#">Usual</a></li>
-          <li class="category"><a href="#">Slow</a></li>
+          <% Friend::WEIGHT.each do |w| %>
+          <li class="category"><%= link_to w, friends_path(attr: w, term: 'weight') %></li>
+          <% end %>
         </ul>
       </div>
 
@@ -27,14 +27,13 @@
 
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Weight
+          Height
           <span class="caret"></span>
         </p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li class="category"><a href="#">Overweight</a></li>
-          <li class="category"><a href="#">Heavy</a></li>
-          <li class="category"><a href="#">Athletic</a></li>
-          <li class="category"><a href="#">Slim</a></li>
+          <% Friend::HEIGHT.each do |h| %>
+          <li class="category"><%= link_to h, friends_path(attr: h, term: 'height') %></li>
+          <% end %>
         </ul>
       </div>
 
@@ -47,9 +46,9 @@
           <span class="caret"></span>
         </p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li class="category"><a href="#">Hulk</a></li>
-          <li class="category"><a href="#">Strong</a></li>
-          <li class="category"><a href="#">Weak</a></li>
+          <% Friend::STRENGTH.each do |s| %>
+          <li class="category"><%= link_to s, friends_path(attr: s, term: 'strength') %></li>
+          <% end %>
         </ul>
 
     </div>
@@ -58,15 +57,13 @@
 
       <div class="dropdown category-handler">
         <p class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Height
+          Agility
           <span class="caret"></span>
         </p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li class="category"><a href="#">Giant</a></li>
-          <li class="category"><a href="#">Tall</a></li>
-          <li class="category"><a href="#">Normal</a></li>
-          <li class="category"><a href="#">Small</a></li>
-          <li class="category"><a href="#">Dwarf</a></li>
+          <% Friend::AGILITY.each do |a| %>
+          <li class="category"><%= link_to a, friends_path(attr: a, term: 'agility') %></li>
+          <% end %>
         </ul>
       </div>
 
