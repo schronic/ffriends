@@ -16,12 +16,13 @@ end
   end
 
   def new
-    @friend = current_user.friends.new
+    @friend = Friend.new
     authorize @friend
   end
 
   def create
-    @friend = current_user.friends.new(friend_params)
+    @friend = Friend.new(friend_params)
+    @friend.user = current_user
     authorize @friend
     if @friend.save
       redirect_to @friend
