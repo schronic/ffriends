@@ -25,7 +25,7 @@ rand(4).times do
     )
   rand(5).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
-    short_slogan = truncate(slogan, 80)
+    short_slogan = truncate(slogan, 35)
     friend = Friend.new(
       rating: Friend::RATING.sample,
       strength: Friend::STRENGTH.sample,
