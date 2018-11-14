@@ -5,6 +5,9 @@ class ReservationPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+  end
+
   def show?
     true
   end

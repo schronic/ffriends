@@ -14,13 +14,24 @@
     <!-- Links when logged in -->
     <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Shopping cart', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <!-- Shopping cart with number of items -->
+    <%= link_to cart_path, class: 'navbar-wagon-link cart' do %>
+      <%= icon('fas', 'shopping-cart') %>
+      <span class='cart-dot'>
+        <span class='cart-num'>
+          <%= @reservations.size %>
+        </span>
+      </span>
+    <% end %>
+
     <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <%= cl_image_tag(current_user.picture, width: 400, height: 300, crop: :fill, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" ) %>
+        <% avatar =  current_user.picture.present? ?current_user.picture : "http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png" %>
+          <%= cl_image_tag(avatar, width: 400, height: 300, crop: :fill, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" ) %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to user_path(current_user) do %>

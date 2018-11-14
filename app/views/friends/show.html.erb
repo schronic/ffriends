@@ -58,7 +58,7 @@
           <h3><%= @friend.slogan %></h3>
           <h4> $ <%= @friend.price %> .00</h4>
           <% if current_user %>
-            <%= simple_form_for @reservation, url: reservations_path, method: :post do |f| %>
+            <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
               <%= f.error_notification %>
               <%= f.hidden_field :user, value: current_user.id %>
               <%= f.hidden_field :friend_id, value: @friend.id %>
