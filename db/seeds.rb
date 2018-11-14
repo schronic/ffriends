@@ -6,8 +6,9 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...max]}..." : slogan
 end
 
-Purchase.destroy_all
+Reservation.destroy_all
 Friend.destroy_all
+Purchase.destroy_all
 User.destroy_all
 
 3.times do
