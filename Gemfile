@@ -21,6 +21,7 @@ gem 'devise'
 gem 'cloudinary'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave', '~> 1.2'
+gem 'toastr-rails'
 
 
 group :development do
