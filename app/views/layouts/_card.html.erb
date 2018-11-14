@@ -1,39 +1,33 @@
 <div class="container">
-<div class="cards">
-  <div class="card">
-  <div class="row">
-    <% @friends.each do |friend| %>
-      <div class="col-xs-12 col-sm-6 col-md-3" >
-
-      <% if friend.picture.present? %>
-        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(friend.picture) %>);">
-      <% else %>
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/600/200/?random');">
-      <% end %>
-  <div class="card-description">
-        <p class="friend-number">ID <%= friend.id %> </p>
-      </div>
-        <%= link_to "", friend_path(friend), class: 'card-link' %>
-      </div>
-      <div class="card-footer">
-            <p class="friend-slogan"> <%= friend.slogan %></p>
-            <p class="friend-price"><%= friend.price %> € per day</p>
-            <p class="friend-rating">
-              <% friend.rating.times do %>
-                <i class="fas fa-star full"></i>
+  <div class="cards">
+      <div class="row">
+        <div class="card">
+          <% @friends.each do |friend| %>
+            <div class="col-xs-12 col-sm-6 col-md-3" >
+              <% if friend.picture.present? %>
+                <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(friend.picture) %>);">
+              <% else %>
+                <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= friend.picture %>);">
               <% end %>
-              <% (5 - friend.rating).times do %>
-                <i class="far fa-star emtpy"></i>
-              <% end %>
-            </p>
+              <div class="card-description">
+                <p class="friend-number">ID <%= friend.id %> </p>
+              </div>
+              <%= link_to "", friend_path(friend), class: 'card-link' %>
+            </div>
+            <div class="card-footer">
+              <p class="friend-slogan"> <%= friend.slogan %></p>
+              <p class="friend-price"><%= friend.price %> € per day</p>
+              <p class="friend-rating">
+                <% friend.rating.times do %>
+                  <i class="fas fa-star full"></i>
+                <% end %>
+                <% (5 - friend.rating).times do %>
+                  <i class="far fa-star emtpy"></i>
+                <% end %>
+              </p>
           </div>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-</div>
-</div>
-
-
-
-

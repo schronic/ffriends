@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_reservations
 
   include Pundit
 
@@ -25,5 +26,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address, :picture])
+  end
+
+  def set_reservations
+    @reservations = Reservation.where(user_id: current_user.id) if user_signed_in?
   end
 end

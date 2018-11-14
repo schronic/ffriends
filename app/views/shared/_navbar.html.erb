@@ -14,7 +14,17 @@
     <!-- Links when logged in -->
     <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Shopping cart', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <!-- Shopping cart with number of items -->
+    <%= link_to cart_path, class: 'navbar-wagon-link cart' do %>
+      <%= icon('fas', 'shopping-cart') %>
+      <span class='cart-dot'>
+        <span class='cart-num'>
+          <%= @reservations.size %>
+        </span>
+      </span>
+    <% end %>
+
     <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Avatar with dropdown menu -->
