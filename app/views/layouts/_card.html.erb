@@ -18,17 +18,16 @@
               <p class="friend-slogan"> <%= friend.slogan %></p>
               <p class="friend-price"><%= friend.price %> € per day</p>
               <p class="friend-rating">
-              <% friend.rating.times do %>
-                <i class="fas fa-star full"></i>
-              <% end %>
-              <% (5 - friend.rating).times do %>
-                <i class="far fa-star emtpy"></i>
-              <% end %>
-                </p>
-              </div>
-            </div>
-          <% end %>
+                <% friend.rating.times do %>
+                  <i class="fas fa-star full"></i>
+                <% end %>
+                <% (5 - friend.rating).times do %>
+                  <i class="far fa-star emtpy"></i>
+                <% end %>
+              </p>
+          </div>
         </div>
-
+      <% end %>
+    </div>
   </div>
 </div>

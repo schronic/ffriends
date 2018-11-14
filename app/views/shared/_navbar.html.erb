@@ -2,12 +2,8 @@
   <!-- Logo -->
 <div class="left">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "fight.jpeg", height: 50 %>
+  <%= image_tag "mask.png", height: 50 %>
   <% end %>
-<%= form_tag(friends_path, method: :get) do %>
-  <%= text_field_tag :term %>
-  <%= submit_tag 'Search' %>
-<% end %>
 </div>
 
   <!-- Right Navigation -->
@@ -37,7 +33,7 @@
         <%= cl_image_tag(current_user.picture, width: 400, height: 300, crop: :fill, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" ) %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "#" do %>
+            <%= link_to user_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
@@ -68,7 +64,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="#">Upload Friend</a></li>
         <li><a href="#">Favourite</a></li>
-        <li><a href="">Shoppingcart</a></li>
+        <li><a href="">Shopping cart</a></li>
         <li><a href="">Log out</a></li>
       </ul>
       <% else %>

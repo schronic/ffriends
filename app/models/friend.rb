@@ -5,10 +5,10 @@ class Friend < ApplicationRecord
   has_many :users, through: :reservations
 
   RATING = [0, 1, 2, 3, 4, 5]
-  STRENGTH = %w[hulk strong weak]
-  WEIGHT = %w[overweight heavy athletic slim]
-  HEIGHT = %w[giant tall normal small dwarf]
-  AGILITY = %w[extreme quick usual slow]
+  STRENGTH = %w[weak strong hulk]
+  WEIGHT = %w[slim athletic heavy overweight]
+  HEIGHT = %w[dwarf small normal tall giant]
+  AGILITY = %w[slow usual quick extreme]
   NATIONALITY = [
   "Afghanistan",
   "Aland Islands",
@@ -260,15 +260,12 @@ class Friend < ApplicationRecord
   validates :slogan, presence: true
   validates_length_of :slogan, maximum: 80
   validates :price, presence: true
-  validates :rating, presence: true
-  validates :rating, inclusion: { in: RATING}
+   # validates :rating, inclusion: { in: RATING}
   validates :strength, inclusion: { in: STRENGTH}
   validates :weight, inclusion: { in: WEIGHT}
   validates :height, inclusion: { in: HEIGHT}
-  validates :agility, inclusion: { in: AGILITY}
+  validates :agility, presence:true, inclusion: { in: AGILITY}
   validates :nationality, inclusion: { in: NATIONALITY}
-
-
 
   mount_uploader :picture, PhotoUploader
 end
