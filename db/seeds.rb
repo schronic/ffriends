@@ -11,13 +11,14 @@ Friend.destroy_all
 User.destroy_all
 
 3.times do
-user = User.create!(
+user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
   address: Faker::Address.street_address,
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name
   )
+user.save!
 rand(4).times do
   purchase = Purchase.new(
     total_price: Faker::Number.decimal(3, 2),
