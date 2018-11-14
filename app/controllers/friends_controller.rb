@@ -25,6 +25,9 @@ end
   def create
     @friend = Friend.new(friend_params)
     @friend.user = current_user
+    @friend.wins = 0
+    @friend.losses = 0
+    @friend.rating = (rating_generator / 1.6)
     authorize @friend
     if @friend.save
       redirect_to @friend
@@ -47,6 +50,7 @@ end
     @friend.destroy
     redirect_to friends_path
   end
+
 private
 
   def set_friend
@@ -60,4 +64,12 @@ private
       :user_id, :slogan, :age, :picture, :price,
       :wins, :losses, :description, :purchase_id, :term, :attr)
   end
+
+  def rating_generator
+    s = Friend::STRENGTH.index(@friend.strength)
+    h = Friend::HEIGHT.index(@friend.height)
+    a = Friend::AGILITY.index(@friend.agility)
+    w = Friend::WEIGHT.index(@friend.weight)
+    return (s + h + a + w)
+    end
 end
