@@ -59,6 +59,7 @@
               <%= f.error_notification %>
               <%= f.hidden_field :user, value: current_user.id %>
               <%= f.hidden_field :friend_id, value: @friend.id %>
+              <div id="description-button">
               <%= f.button :submit, 'Add to cart', class: 'btn btn-danger btn-lg' %>
             <% end %>
           <% else %>
@@ -66,7 +67,7 @@
               Add to cart
             </div>
           <% end %>
-
+          </div>
 
           <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
           <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>

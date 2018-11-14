@@ -1,0 +1,25 @@
+.btn-login {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: 2px solid #505050;
+    border-radius: 5px;
+    background-color: #505050; /* Green */
+    color: white;
+
+  }
+
+  .btn-login:hover {
+    background-color: #fff;
+  }
+
+
+  .button-links {
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    a {
+      color: white;
+    }
+
+  }

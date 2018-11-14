@@ -268,6 +268,5 @@ class Friend < ApplicationRecord
   validates :agility, presence:true, inclusion: { in: AGILITY}
   validates :nationality, inclusion: { in: NATIONALITY}
 
-
   mount_uploader :picture, PhotoUploader
 end
