@@ -28,10 +28,6 @@ class PurchasesController < ApplicationController
     redirect_to purchases_path
   end
 
-  def cart
-
-  end
-
 private
 
   def set_purchase

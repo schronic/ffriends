@@ -2,14 +2,13 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-
-def index
-  if params[:term]
-    @friends = Friend.where(id: params[:term])
-  else
-    @friends = policy_scope(Friend).order(created_at: :asc)
+  def index
+    if params[:term]
+      @friends = Friend.where(id: params[:term])
+    else
+      @friends = policy_scope(Friend).order(created_at: :asc)
+    end
   end
-end
 
   def show
     @reservation = Reservation.new

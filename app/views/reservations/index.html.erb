@@ -1,2 +1,37 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h1>Shopping Cart</h1>
+<div class="container">
+  <div class="cards">
+    <div class="card">
+      <div class="row">
+        <% @reservations.each do |reservation| %>
+          <div class="col-xs-12 col-sm-6 col-md-3" >
+            <% if reservation.friend.picture.present? %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
+            <% else %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= reservation.friend.picture %>);">
+            <% end %>
+            <div class="card-description">
+              <p class="friend-number">ID <%= reservation.friend.id %> </p>
+            </div>
+            <%= link_to "", friend_path(reservation.friend), class: 'card-link' %>
+            </div>
+            <div class="card-footer">
+              <p class="friend-slogan"> <%= reservation.friend.slogan %></p>
+              <p class="friend-price"><%= reservation.friend.price %> € per day</p>
+              <p class="friend-rating">
+                <% reservation.friend.rating.times do %>
+                  <i class="fas fa-star full"></i>
+                <% end %>
+                <% (5 - reservation.friend.rating).times do %>
+                  <i class="far fa-star emtpy"></i>
+                <% end %>
+              </p>
+              <p class="friend-slogan">Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

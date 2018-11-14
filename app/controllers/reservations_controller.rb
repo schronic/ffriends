@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show new create edit update destroy]
 
   def index
-    @reservations = policy_scope(Reservation).order(created_at: :desc)
+    @reservations = policy_scope(Reservation).order(user_id: :desc)
   end
 
   def show
@@ -21,9 +21,9 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to @reservation.friend
     else
-      render html: "You received the following error: #{
+      render html: "You received the following error: <em>#{
       @reservation.errors.full_messages
-      }"
+      }</em>"
     end
   end
 
