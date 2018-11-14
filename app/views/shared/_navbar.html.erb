@@ -1,64 +1,71 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
 <div class="left">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
   <%= image_tag "fight.jpeg", height: 50 %>
   <% end %>
-  <%= simple_form_for(friends_path) do %>
-    <%= text_field_tag :Search %>
-    <%= submit_tag 'Search' %>
-  <% end %>
+<%= form_tag(friends_path, method: :get) do %>
+  <%= text_field_tag :term %>
+  <%= submit_tag 'Search' %>
+<% end %>
 </div>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
-      <!-- Links when logged in -->
-      <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Help', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Shoppingcart', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Links when logged in -->
+    <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'Shoppingcart', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= cl_image_tag(current_user.picture, width: 400, height: 300, crop: :fill, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" ) %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+    <!-- Avatar with dropdown menu -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%= cl_image_tag(current_user.picture, width: 400, height: 300, crop: :fill, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" ) %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to "#" do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+            <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
       </div>
+    </div>
     <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Login link (when logged out) -->
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
+      <% if user_signed_in? %>
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><a href="#">Upload Friend</a></li>
+        <li><a href="#">Favourite</a></li>
+        <li><a href="">Shoppingcart</a></li>
+        <li><a href="">Log out</a></li>
       </ul>
+      <% else %>
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Log in</a></li>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>

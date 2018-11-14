@@ -21,12 +21,12 @@ rand(4).times do
     )
   rand(5).times do
     friend = Friend.new(
-      rating: Faker::Number.between(1, 5),
-      strength: Faker::Number.between(1, 10),
-      agility: Faker::Number.between(1, 10),
-      weight: Faker::Number.between(1, 10),
-      height: Faker::Number.between(1, 10),
-      nationality: 'Germany',
+      rating: Friend::RATING.sample,
+      strength: Friend::STRENGTH.sample,
+      agility: Friend::AGILITY.sample,
+      weight: Friend::WEIGHT.sample,
+      height: Friend::HEIGHT.sample,
+      nationality: Friend::NATIONALITY.sample,
       user: user,
       slogan: Faker::String.random(10..79),
       age: Faker::Number.between(5, 90),

@@ -2,9 +2,14 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  def index
-    @friends = policy_scope(Friend).order(created_at: :desc)
+
+def index
+  if params[:term]
+    @friends = Friend.where(id: params[:term])
+  else
+    @friends = policy_scope(Friend).order(created_at: :asc)
   end
+end
 
   def show
   end
@@ -39,7 +44,6 @@ class FriendsController < ApplicationController
     @friend.destroy
     redirect_to friends_path
   end
-
 private
 
   def set_friend
@@ -51,6 +55,6 @@ private
     params.require(:friend).permit(:rating, :strength,
       :agility, :weight, :height, :nationality,
       :user_id, :slogan, :age, :picture, :price,
-      :wins, :losses, :description, :purchase_id)
+      :wins, :losses, :description, :purchase_id, :term)
   end
 end
