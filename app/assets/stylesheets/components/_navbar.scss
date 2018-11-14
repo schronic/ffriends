@@ -81,3 +81,21 @@
   display: flex;
   align-items: center;
 }
+
+.search-bar {
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 0 0 0 10px;
+  button {
+    border: none;
+  }
+  input {
+    border: none;
+  }
+}
+
+
+.search-bar input {
+  outline: none;
+}
+
