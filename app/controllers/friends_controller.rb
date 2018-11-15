@@ -13,6 +13,7 @@ class FriendsController < ApplicationController
 
   def show
     @reservation = Reservation.new
+    @reviews = Review.where(friend_id: @friend.id)
     @user = User.find(@friend.user_id)
   end
 

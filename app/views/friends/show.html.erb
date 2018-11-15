@@ -48,6 +48,14 @@
                 </div>
                 <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
                   <p>Reviews</p>
+                  <%= link_to 'new review', new_friend_review_path(@friend) %>
+                  <br>
+                  <% @reviews.each do |review| %>
+                  <%= review.content %>
+                  <% user = User.find(review.user_id) %>
+                  <em><%= user.first_name %> <%= user.last_name %></em>
+                  <br>
+                  <% end %>
                 </div>
               </div>
             </div>
