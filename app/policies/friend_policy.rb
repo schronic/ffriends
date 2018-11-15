@@ -1,7 +1,7 @@
 class FriendPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(purchase_id: nil)
     end
   end
   def index?

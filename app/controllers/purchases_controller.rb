@@ -13,10 +13,12 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.create(purchase_params)
     authorize @purchase
     @reservations.each do |reservation|
+      authorize reservation
       friend = reservation.friend
       friend.update(user_id: reservation.user_id)
       friend.update(purchase_id: @purchase.id)
     end
+    Reservation.where(user_id: current_user.id).destroy_all
     redirect_to @purchase
   end
 

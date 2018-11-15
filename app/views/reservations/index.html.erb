@@ -5,6 +5,7 @@
 <% total_items += 1 %>
 <% end %>
 <h1>Shopping Cart</h1>
+        <% if @reservations.length > 0 %>
 <div class="flex-wrapper">
   <div class="container">
     <div class="cards">
@@ -12,13 +13,13 @@
         <% @reservations.each do |reservation| %>
         <div class="reservation">
           <% if reservation.friend.picture.present? %>
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
-            <% else %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
+          <% else %>
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/800/300/?random');">
-              <% end %>
-              <div class="card-description">
-                <p class="friend-number">ID <%= reservation.friend.id %> </p>
-              </div>
+          <% end %>
+          <div class="card-description">
+          <p class="friend-number">ID <%= reservation.friend.id %> </p>
+          </div>
               <%= link_to "", friend_path(reservation.friend), class: 'card-link' %>
             </div>
             <div class="card-footer">
@@ -33,9 +34,11 @@
                 <% end %>
               </p>
               <p class="friend-slogan">Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
+                <%= link_to 'Delete from carrt', delete_reservation_path(reservation) %>
               </p>
             </div>
           </div>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -58,5 +61,3 @@
 </div>
 
 </div>
-
-

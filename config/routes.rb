@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get    '/cart/:id',      to: 'reservations#show',   as: 'reservation'
   patch  '/cart/:id',      to: 'reservations#update'
   put    '/cart/:id',      to: 'reservations#update'
-  delete '/cart/:id',      to: 'reservations#destroy'
+  delete '/cart/:id',      to: 'reservations#destroy', as: 'delete_reservation'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
