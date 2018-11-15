@@ -3,6 +3,8 @@ class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @reservation = Reservation.new
+    @reservations = Reservation.all
     if params[:term]
       @friends = policy_scope(Friend).order(created_at: :asc)
       @friends = Friend.where(params[:term].to_sym => params[:attr])

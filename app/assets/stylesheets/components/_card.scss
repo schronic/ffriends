@@ -2,10 +2,9 @@
 // font-family: 'Open Sans', sans-serif;
 // font-family: 'Roboto', sans-serif;
 
-.card {
-  // display: inline-block;
-  // height: 300px;
-}
+// .fa-input {
+//   font-family: FontAwesome, ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
+// }
 
 .card-body {
   height: 200px;
@@ -16,22 +15,35 @@
   color: white;
   position: relative;
   border-radius: 2px;
-}
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 18px;
-  font-family: Roboto;
-}
-.card-description {
-  h2 {
-  font-size: 24px;
+  .card-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    // color: #da552f;
+    text-decoration: none;
+    z-index: 3;
+
+    .card-icon {
+      background-color: transparent;
+      font-size: 30px;
+      color: #ddd !important;
+    }
+    .card-icon:hover {
+      color: #da552f !important;
+    }
+  }
+  .card-btn:hover {
+    // z-index: 4;
   }
   p {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
     font-size: 17px;
+    font-family: Roboto;
   }
 }
+
 .card-link {
   position: absolute;
   top: 0;
@@ -47,10 +59,10 @@
 .card-link:hover {
   opacity: 0.1;
 }
-.class-footer {
+.card-footer {
+  height: 100px;
   p {
     text-size: 10px;
-
   }
 }
 
@@ -74,9 +86,7 @@
   font-family: Roboto;
   font-size: 16px;
   margin-bottom: 0;
-
 }
-
 
 .friend-slogan{
   font-weight:bold;

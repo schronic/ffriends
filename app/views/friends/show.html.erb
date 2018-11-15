@@ -72,8 +72,8 @@
           <% end %>
           </div>
 
-          <div id="shipping"><i class="fas fa-check"></i><strong> Standard delivery</strong> 3-5 working days</div>
-          <div id="shipping"><i class="fas fa-check"></i><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
+          <div id="shipping"><%= icon('fas', 'check') %><strong> Standard delivery</strong> 3-5 working days</div>
+          <div id="shipping"><%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)</div>
           <p style="margin-top: 20px;">
             <% if policy(@friend).edit? %>
             <%= link_to "Edit |", edit_friend_path(@friend) %>

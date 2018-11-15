@@ -9,11 +9,54 @@
               <% else %>
                 <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= friend.picture %>);">
               <% end %>
+
+              <!-- Everything inside the picture -->
               <div class="card-description">
+                <%= link_to "", friend_path(friend), class: 'card-link' %>
                 <p class="friend-number">ID <%= friend.id %> </p>
+                <div class="card-btn">
+
+                  <!-- Set friend's cart status based on current user -->
+                  <% status = 'available' %>
+                  <% @reservations.each do |reservation| %>
+                    <% status = 'reserved' if reservation.friend_id == friend.id && %>
+                      <% reservation.user_id == current_user.id %>
+                  <% end %>
+
+                  <!-- Icon to add to cart if not already in cart -->
+                  <% if status == 'available' %>
+                    <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+
+                      <%= f.error_notification %>
+                      <%= f.hidden_field :user, value: current_user.id %>
+                      <%= f.hidden_field :friend_id, value: friend.id %>
+                      <%= f.button :button, class: 'card-icon' do %>
+                        <%= icon('fas', 'cart-plus') %>
+                      <% end %>
+                    <% end %>
+
+                  <!-- Icon to remove from cart if already in cart -->
+                  <% elsif status == 'reserved' %>
+                    <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                      <%= f.error_notification %>
+                      <%= f.hidden_field :user, value: current_user.id %>
+                      <%= f.hidden_field :friend_id, value: friend.id %>
+                      <%= f.button :button, class: 'card-icon' do %>
+                        <%= icon('fas', 'user-minus') %>
+                      <% end %>
+                    <% end %>
+
+                  <!-- Don't show an icon if something weird happens -->
+                  <% else %>
+                  <% end %>
+                </div>
               </div>
-              <%= link_to "", friend_path(friend), class: 'card-link' %>
+
+
+
+
             </div>
+
             <div class="card-footer">
               <p class="friend-slogan"> <%= friend.slogan %></p>
               <p class="friend-price"><%= friend.price %> € per day</p>
