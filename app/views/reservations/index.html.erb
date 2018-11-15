@@ -43,12 +43,17 @@
 <br>
 
 <div class="cart-details">
-  <h3>Shopping Bag:</h3>
+  <h3>Cart Details:</h3>
+   <p>
+      Items:  <%= @reservations.map { |reservation| reservation.friend}.count %>
+  </p>
   <p>
   Total: <%= @reservations.map { |reservation| reservation.friend.price }.sum %> €
-  <%= @reservations.map { |reservation| reservation.friend}.count %> Items
-  </p>
-  <a href=""> purchase</a>
+    </p>
+
+<div id="purchase-button">
+  <%= link_to "Purchase", edit_user_registration_path, class: 'btn btn-danger btn-lg' %>
+</div>
 
 </div>
 </div>
