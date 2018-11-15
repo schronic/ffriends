@@ -2,11 +2,18 @@ Rails.application.routes.draw do
   root to: 'friends#index'
 
   devise_for :users
+
   resources :arenas, only:[:show, :index]
   resources :fights, except: [:edit, :update]
   resources :friends
+
+  resources :friends do
+    resources :reviews
+  end
+
   resources :purchases, except: [:edit, :update]
   resources :users, only: [:show]
+
   # resources :reservations
   # resources :cart, controller: 'reservations', path: 'cart'
   get    '/cart',          to: 'reservations#index',  as: 'cart'
@@ -16,6 +23,8 @@ Rails.application.routes.draw do
   get    '/cart/:id',      to: 'reservations#show',   as: 'reservation'
   patch  '/cart/:id',      to: 'reservations#update'
   put    '/cart/:id',      to: 'reservations#update'
-  delete '/cart/:id',      to: 'reservations#destroy'
+  delete '/cart/:id',      to: 'reservations#destroy',as: 'delete_reservation'
+  get    '/upload/new',    to: 'friends#upload',         as: 'upload_friend'
+  post   '/upload',        to: 'friends#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -4,6 +4,9 @@ class PurchasePolicy < ApplicationPolicy
       scope.all
     end
   end
+  def new?
+    true
+  end
 
   def show?
     current_user_or_admin?

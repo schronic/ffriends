@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :destroy]
 
   def show
+    @friends = Friend.where(user_id: @user)
   end
 
   def new

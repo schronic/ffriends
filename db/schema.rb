@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_11_15_170920) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +88,16 @@ ActiveRecord::Schema.define(version: 2018_11_15_170920) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_reviews_on_friend_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -113,4 +124,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_170920) do
   add_foreign_key "purchases", "users"
   add_foreign_key "reservations", "friends"
   add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "friends"
+  add_foreign_key "reviews", "users"
 end

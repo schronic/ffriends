@@ -1,7 +1,7 @@
 class FriendPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(purchase_id: nil)
     end
   end
   def index?
@@ -22,6 +22,10 @@ class FriendPolicy < ApplicationPolicy
 
   def destroy?
     current_user_or_admin?
+  end
+
+  def upload?
+    true
   end
 
   private

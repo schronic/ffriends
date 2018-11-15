@@ -1,7 +1,7 @@
 <% total_price = 0 %>
 <% total_items = 0 %>
-<% @reservations.each do |reservation| %>
-<% total_price += reservation.friend.price %>
+<% @friends.each do |friend| %>
+<% total_price += friend.price %>
 <% total_items += 1 %>
 <% end  %>
 
@@ -18,15 +18,14 @@
 
       <div>
       <div>
-        <% @reservations.each do |reservation| %>
+        <% @friends.each do |friend| %>
         <div>
-          <% if reservation.friend.picture.present? %>
-          <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url(<%= cl_image_path(reservation.friend.picture) %>);" class="confirmation-image">
+          <% if friend.picture.present? %>
+          <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url(<%= cl_image_path(friend.picture) %>);" class="confirmation-image">
             <% else %>
             <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url('https://picsum.photos/300/300/?random');" class="confirmation-image">
               <% end %>
               <div>
-                <<!-- p class="confirmation-image">ID <%= reservation.friend.id %> </p> -->
               </div>
             </div>
 
@@ -40,3 +39,4 @@
   </div>
  </div>
 </div>
+

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :purchases
   has_many :reservations
   has_many :friends, through: :reservations
+  has_many :reviews
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
