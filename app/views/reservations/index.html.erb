@@ -1,4 +1,8 @@
+
 <h1>Shopping Cart</h1>
+<br>
+<div class="wrapper">
+<div class="firends">
 <div class="container">
   <div class="cards">
     <div class="card">
@@ -34,4 +38,17 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+<br>
+
+<div class="cart-details">
+  <h3>Shopping Bag:</h3>
+  <p>
+  Total: <%= @reservations.map { |reservation| reservation.friend.price }.sum %> €
+  <%= @reservations.map { |reservation| reservation.friend}.count %> Items
+  </p>
+  <a href=""> purchase</a>
+
+</div>
 </div>
