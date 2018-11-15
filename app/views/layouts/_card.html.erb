@@ -19,40 +19,43 @@
                 <div class="card-btn">
 
                   <!-- Set friend's cart status based on current user -->
-                  <% status = 'available' %>
-                  <% @reservations.each do |reservation|
-                    if reservation.friend_id == friend.id && reservation.user_id == current_user.id
-                      status = 'reserved'
-                      @reservation = reservation
-                    end
-                  end %>
+                  <% if user_signed_in? %>
+                    <% status = 'available' %>
+                    <% @reservations.each do |reservation|
+                      if reservation.friend_id == friend.id && reservation.user_id == current_user.id
+                        status = 'reserved'
+                        @reservation = reservation
+                      end
+                    end %>
 
 
-                  <!-- Icon to add to cart if not already in cart -->
-                  <% if status == 'available' %>
-                    <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
-                      <%= f.error_notification %>
-                      <%= f.hidden_field :user, value: current_user.id %>
-                      <%= f.hidden_field :friend_id, value: friend.id %>
-                      <%= f.button :button, class: 'card-icon' do %>
-                        <%= icon('fas', 'cart-plus') %>
+                    <!-- Icon to add to cart if not already in cart -->
+                    <% if status == 'available' %>
+                      <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                        <%= f.error_notification %>
+                        <%= f.hidden_field :user, value: current_user.id %>
+                        <%= f.hidden_field :friend_id, value: friend.id %>
+                        <%= f.button :button, class: 'card-icon' do %>
+                          <%= icon('fas', 'cart-plus') %>
+                        <% end %>
                       <% end %>
-                    <% end %>
 
-                  <!-- Icon to remove from cart if already in cart -->
-                  <% elsif status == 'reserved' %>
-                    <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
-                      <%= f.error_notification %>
-                      <%= f.hidden_field :user, value: current_user.id %>
-                      <%= f.hidden_field :friend_id, value: friend.id %>
-                      <%= f.button :button, class: 'card-icon' do %>
-                        <%= icon('fas', 'user-minus') %>
+                    <!-- Icon to remove from cart if already in cart -->
+                    <% elsif status == 'reserved' %>
+                      <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
+                        <%= f.error_notification %>
+                        <%= f.hidden_field :user, value: current_user.id %>
+                        <%= f.hidden_field :friend_id, value: friend.id %>
+                        <%= f.button :button, class: 'card-icon' do %>
+                          <%= icon('fas', 'user-minus') %>
+                        <% end %>
                       <% end %>
-                    <% end %>
 
-                  <!-- Don't show an icon if something weird happens -->
-                  <% else %>
+                    <!-- Don't show an icon if something weird happens -->
+                    <% else %>
+                    <% end %>
                   <% end %>
+
                 </div>
               </div>
             </div>

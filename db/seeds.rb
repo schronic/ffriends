@@ -26,7 +26,7 @@ rand(4).times do
   purchase.save!
   rand(5).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
-    short_slogan = truncate(slogan, 35)
+    short_slogan = truncate(slogan, 80)
     friend = Friend.new(
       rating: Friend::RATING.sample,
       strength: Friend::STRENGTH.sample,
@@ -35,7 +35,7 @@ rand(4).times do
       height: Friend::HEIGHT.sample,
       nationality: Friend::NATIONALITY.sample,
       user: user,
-      slogan: Faker::MostInterestingManInTheWorld.quote,
+      slogan: short_slogan,
       age: Faker::Number.between(5, 90),
       price: Faker::Number.between(1, 200),
       wins: Faker::Number.between(1, 10),

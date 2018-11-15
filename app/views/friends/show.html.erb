@@ -58,53 +58,61 @@
           <div class="col-md-6" id="friend-description">
             <h3><%= @friend.slogan %></h3>
             <h4> $ <%= @friend.price %> .00</h4>
-            <!-- Add to cart button -->
-            <% if @reserved[0] %>
-              <div class='btn btn-danger btn-lg'>
-                Added to cart
-              </div>
-            <% elsif current_user %>
-              <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
-                  <%= f.error_notification %>
-                  <%= f.hidden_field :user, value: current_user.id %>
-                  <%= f.hidden_field :friend_id, value: @friend.id %>
-                  <div id="description-button">
-                    <%= f.button :submit, 'Add to cart', class: 'btn btn-danger btn-lg' %>
+
+            <!-- Button for signed-in users to add to cart or show that in cart -->
+            <% if user_signed_in? %>
+              <% if @reserved[0] %>
+                <div class='btn btn-danger btn-lg'>
+                  Added to cart
+                </div>
+              <% elsif current_user %>
+                <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.hidden_field :user, value: current_user.id %>
+                    <%= f.hidden_field :friend_id, value: @friend.id %>
+                    <div id="description-button">
+                      <%= f.button :submit, 'Add to cart', class: 'btn btn-danger btn-lg' %>
+                <% end %>
+              <% else %>
+                <div class='btn btn-danger btn-lg'>
+                  Not in cart and not logged in
+                </div>
               <% end %>
+
+            <!-- Button for people that are not signed in  -->
             <% else %>
-              <div class='btn btn-danger btn-lg'>
-                Login to add
+              <%= link_to 'Login to Add', new_user_session_path, class: 'btn btn-danger btn-lg' %>
+            <% end %>
+
+              <div id="shipping">
+                <%= icon('fas', 'check') %>
+                <strong> Standard delivery</strong> 3-5 working days
               </div>
-            <% end %>
+              <div id="shipping">
+                <%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)
+              </div>
 
-          <div id="shipping">
-            <%= icon('fas', 'check') %>
-            <strong> Standard delivery</strong> 3-5 working days
-          </div>
-          <div id="shipping">
-            <%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)
-          </div>
+              <% if user_signed_in? %>
+                <div class="remove-edit-delete-back" style="margin-top: 20px;">
+                <!-- Remove from cart if in cart -->
+                <% if @reserved[0] %>
+                  <%= link_to "Remove from Cart |", reservation_path(@reserved[0]),
+                    method: :delete,
+                    data: { confirm: "Remove from cart?" } %>
+                <% end %>
+              <% end %>
 
-          <div class="remove-edit-delete-back" style="margin-top: 20px;">
-          <!-- Remove from cart if in cart -->
-            <% if @reserved[0] %>
-              <%= link_to "Remove from Cart |", reservation_path(@reserved[0]),
-                method: :delete,
-                data: { confirm: "Remove from cart?" } %>
-            <% end %>
-
-          <!-- Edit and Delete if you own this friend -->
-            <% if policy(@friend).edit? %>
-              <%= link_to "Edit Friend |", edit_friend_path(@friend) %>
-            <% end %>
-            <% if policy(@friend).destroy? %>
-              <%= link_to "Delete Friend |", friend_path(@friend),
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-            <% end %>
-            <%= link_to "Back Home", friends_path %>
-          </div>
-
+              <!-- Edit and Delete if you own this friend -->
+              <% if policy(@friend).edit? %>
+                <%= link_to "Edit Friend |", edit_friend_path(@friend) %>
+              <% end %>
+              <% if policy(@friend).destroy? %>
+                <%= link_to "Delete Friend |", friend_path(@friend),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+              <% end %>
+              <%= link_to "Back Home", friends_path %>
+            </div>
           </div>
         </div>
       </div>
