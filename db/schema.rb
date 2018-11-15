@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_171943) do
+ActiveRecord::Schema.define(version: 2018_11_15_170920) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "arenas", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.integer "capacity"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
@@ -22,6 +34,19 @@ ActiveRecord::Schema.define(version: 2018_11_15_171943) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_carts_on_friend_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.bigint "arena_id"
+    t.bigint "friend_id"
+    t.string "name"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["arena_id"], name: "index_fights_on_arena_id"
+    t.index ["friend_id"], name: "index_fights_on_friend_id"
   end
 
   create_table "friends", force: :cascade do |t|
@@ -92,6 +117,8 @@ ActiveRecord::Schema.define(version: 2018_11_15_171943) do
 
   add_foreign_key "carts", "friends"
   add_foreign_key "carts", "users"
+  add_foreign_key "fights", "arenas"
+  add_foreign_key "fights", "fights", column: "friend_id"
   add_foreign_key "friends", "purchases"
   add_foreign_key "friends", "users"
   add_foreign_key "purchases", "users"
