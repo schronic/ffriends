@@ -14,19 +14,23 @@
               <div class="card-description">
                 <%= link_to "", friend_path(friend), class: 'card-link' %>
                 <p class="friend-number">ID <%= friend.id %> </p>
+
+                <!-- Icons to add or remove from cart -->
                 <div class="card-btn">
 
                   <!-- Set friend's cart status based on current user -->
                   <% status = 'available' %>
-                  <% @reservations.each do |reservation| %>
-                    <% status = 'reserved' if reservation.friend_id == friend.id && %>
-                      <% reservation.user_id == current_user.id %>
-                  <% end %>
+                  <% @reservations.each do |reservation|
+                    if reservation.friend_id == friend.id && reservation.user_id == current_user.id
+                      status = 'reserved'
+                      @reservation = reservation
+                    end
+                  end %>
+
 
                   <!-- Icon to add to cart if not already in cart -->
                   <% if status == 'available' %>
                     <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
-
                       <%= f.error_notification %>
                       <%= f.hidden_field :user, value: current_user.id %>
                       <%= f.hidden_field :friend_id, value: friend.id %>
@@ -37,7 +41,7 @@
 
                   <!-- Icon to remove from cart if already in cart -->
                   <% elsif status == 'reserved' %>
-                    <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                    <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
                       <%= f.error_notification %>
                       <%= f.hidden_field :user, value: current_user.id %>
                       <%= f.hidden_field :friend_id, value: friend.id %>
@@ -51,12 +55,8 @@
                   <% end %>
                 </div>
               </div>
-
-
-
-
             </div>
-
+            <!-- Card footer -->
             <div class="card-footer">
               <p class="friend-slogan"> <%= friend.slogan %></p>
               <p class="friend-price"><%= friend.price %> € per day</p>
@@ -68,9 +68,8 @@
                   <i class="far fa-star emtpy"></i>
                 <% end %>
               </p>
-          </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -88,3 +88,11 @@
   margin-top: 70px;
   margin-bottom: 20px;
 }
+
+#editdelete a{
+  text-decoration: none;
+  color: black;
+  &:hover{
+    font-weight: bold;
+  }
+}

@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.new(reservation_params)
     authorize @reservation
     if @reservation.save
-      redirect_to @reservation.friend
+      redirect_to friends_path
     else
       render html: "<h1>You received the following error:</h1>
       <h3><em>#{@reservation.errors.full_messages}</em></h3>".html_safe
@@ -39,7 +39,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation.destroy
-    redirect_to reservations_path
+    redirect_to friends_path
   end
 
 private

@@ -6,9 +6,9 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...max]}..." : slogan
 end
 
-User.destroy_all
-Friend.destroy_all
 Purchase.destroy_all
+Friend.destroy_all
+User.destroy_all
 
 3.times do
 user = User.create!(
@@ -19,10 +19,11 @@ user = User.create!(
   last_name: Faker::Name.last_name
   )
 rand(4).times do
-  purchase = Purchase.create(
+  purchase = Purchase.new(
     total_price: Faker::Number.decimal(3, 2),
     user: user
     )
+  purchase.save!
   rand(5).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
     short_slogan = truncate(slogan, 35)
@@ -34,7 +35,7 @@ rand(4).times do
       height: Friend::HEIGHT.sample,
       nationality: Friend::NATIONALITY.sample,
       user: user,
-      slogan: short_slogan,
+      slogan: Faker::MostInterestingManInTheWorld.quote,
       age: Faker::Number.between(5, 90),
       price: Faker::Number.between(1, 200),
       wins: Faker::Number.between(1, 10),
@@ -43,7 +44,7 @@ rand(4).times do
       purchase: purchase,
       )
       friend.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/200/300/?random')['url']
-      friend.save
+      friend.save!
     end
   end
 end
