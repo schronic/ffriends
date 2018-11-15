@@ -124,6 +124,9 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
               <% end %>
+              <% if policy(@friend).edit? && policy(@friend).create? %>
+                <%= link_to "Sell", new_friend_path(term: @friend)%>
+              <% end %>
 
               <!-- Back Home for everybody -->
               <%= link_to "Back Home", friends_path %>

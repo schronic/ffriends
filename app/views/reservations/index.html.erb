@@ -91,13 +91,14 @@
             <!-- Display stars ends above this line -->
             <p class="friend-slogan">
               Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
+              <%= link_to 'Delete from cart', delete_reservation_path(reservation), method: :delete %>
             </p>
           </div>
           <!-- Card footer ends above this line -->
-
+        </div>
         <% end %>
         <!-- END iterate to create cards -->
-
+      </div>
       </div>
       <!-- END .card-reservation -->
     </div>
@@ -110,7 +111,7 @@
     <div class="sticky">
       <h3 id="total">Total: <%= total_price %>$</h3>
       <h4 id="total">Items: <%= total_items %></h4>
-      <%= simple_form_for @purchase, url: new_purchase_path, method: :get do |f| %>
+      <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
         <%= f.error_notification %>
         <%= f.hidden_field :total_price, value: total_price %>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -125,6 +126,3 @@
 
 </div>
 <!-- END .flex-wrapper -->
-
-
-

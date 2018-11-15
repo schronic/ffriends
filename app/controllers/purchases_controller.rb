@@ -7,16 +7,23 @@ class PurchasesController < ApplicationController
   end
 
   def show
+    @friends = []
+    @reservations.each do |reservation|
+      @friends << reservation.friend
+    end
+    Reservation.where(user_id: current_user.id).destroy_all
   end
 
-  def new
+  def create
     @purchase = Purchase.create(purchase_params)
     authorize @purchase
     @reservations.each do |reservation|
+      authorize reservation
       friend = reservation.friend
-      friend.update(user_id:reservation.user_id)
+      friend.update(user_id: reservation.user_id)
       friend.update(purchase_id: @purchase.id)
     end
+    redirect_to @purchase
   end
 
   def destroy

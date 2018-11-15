@@ -45,8 +45,11 @@ class FriendsController < ApplicationController
 
   def update
     @friend.update(friend_params)
+    if params[:commit] = "Upload Friend"
+      @friend.update(purchase_id: nil)
+    end
     if @friend.save
-      redirect_to @friend
+      redirect_to friends_path
     else render :edit
     end
   end
@@ -67,7 +70,7 @@ private
     params.require(:friend).permit(:rating, :strength,
       :agility, :weight, :height, :nationality,
       :user_id, :slogan, :age, :picture, :price,
-      :wins, :losses, :description, :purchase_id, :term, :attr)
+      :wins, :losses, :description, :purchase_id, :term, :attr, :commit)
   end
 
   def rating_generator
