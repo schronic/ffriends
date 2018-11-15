@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="cards">
       <div class="row">
@@ -19,21 +20,26 @@
                 <div class="card-btn">
 
                   <!-- Set friend's cart status based on current user -->
-                  <% if user_signed_in? %>
-                    <% status = 'available' %>
-                    <% @reservations.each do |reservation|
-                      if reservation.friend_id == friend.id && reservation.user_id == current_user.id
-                        status = 'reserved'
-                        @reservation = reservation
-                      elsif current_user.id == reservation.user_id
-                        status = 'owned'
-                        @reservation = reservation
-                      end
-                    end %>
+                  <%  if user_signed_in?
+                        # Marked friend as owned
+                        if current_user.id == friend.user_id
+                          status = 'owned'
+                        # Mark friend as available
+                        else
+                          status = 'available'
+                        end
+                        # Mark friend as in cart
+                        @reservations.each do |reservation|
+                          if reservation.friend_id == friend.id && reservation.user_id == current_user.id
+                            status = 'reserved'
+                            @reservation = reservation
+                          end
+                        end %>
 
                     <!-- Icon: Friend owned -->
                     <% if status == 'owned' %>
                       <%= link_to icon('fas', 'user'), friend_path(friend),
+                        class: 'card-icon',
                         data: { confirm: "You already own this friend. Go to his page?" } %>
 
                     <!-- Icon: Add Friend to cart -->
@@ -63,6 +69,9 @@
                     <% end %>
                   <% end %>
 
+
+
+
                 </div>
               </div>
             </div>
@@ -83,3 +92,4 @@
     <% end %>
   </div>
 </div>
+<% console %>

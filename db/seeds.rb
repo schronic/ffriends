@@ -3,7 +3,7 @@ puts "Destroying old data..."
 puts "Creating new users..."
 
 def truncate(slogan, max)
-  slogan.length > max ? "#{slogan[0...max]}..." : slogan
+  slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
 Reservation.destroy_all
