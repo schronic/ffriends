@@ -12,7 +12,8 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = current_user.reservations.new
+    @reservation = Reservations.new
+    @reservation.user_id = current_user
     authorize @reservation
   end
 
@@ -40,7 +41,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation.destroy
-    redirect_to reservations_path
+    redirect_to cart_path
   end
 
 private
