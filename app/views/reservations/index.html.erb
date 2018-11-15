@@ -1,63 +1,128 @@
 <% total_price = 0 %>
 <% total_items = 0 %>
 <% @reservations.each do |reservation| %>
-<% total_price += reservation.friend.price %>
-<% total_items += 1 %>
+  <% total_price += reservation.friend.price %>
+  <% total_items += 1 %>
 <% end %>
 <h1>Shopping Cart</h1>
-        <% if @reservations.length > 0 %>
+
 <div class="flex-wrapper">
   <div class="container">
     <div class="cards">
       <div class="card-reservation">
+
+        <!-- Iterate to create cards -->
         <% @reservations.each do |reservation| %>
-        <div class="reservation">
-          <% if reservation.friend.picture.present? %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
-          <% else %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/800/300/?random');">
-          <% end %>
-          <div class="card-description">
-          <p class="friend-number">ID <%= reservation.friend.id %> </p>
+          <!-- Single card in cart -->
+          <!-- <div class="reservation"> -->
+            <!-- Set picture -->
+            <% if reservation.friend.picture.present? %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
+            <% else %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/800/300/?random');">
+
+                <!-- Everything inside the picture -->
+                <div class="card-description">
+
+                  <!-- Friend ID and clickable card -->
+                  <%= link_to "", friend_path(reservation.friend), class: 'card-link' %>
+                  <p class="friend-number">ID <%= reservation.friend.id %> </p>
+
+                  <!-- Clickable icons on cart -->
+                  <div class="card-btn">
+                    <!-- Set friend's cart status based on current user -->
+                    <% status = 'available' %>
+                    <% @reservations.each do |reservation|
+                      if reservation.user_id == current_user.id
+                        status = 'reserved'
+                        @reservation = reservation
+                      end
+                    end %>
+
+                    <!-- Icon to add to cart if not already in cart -->
+                    <% if status == 'available' %>
+                      <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                        <%= f.error_notification %>
+                        <%= f.hidden_field :user, value: current_user.id %>
+                        <%= f.hidden_field :friend_id, value: reservation.friend.id %>
+                        <%= f.button :button, class: 'card-icon' do %>
+                          <%= icon('fas', 'user-plus') %>
+                        <% end %>
+                      <% end %>
+
+                    <!-- Icon to remove from cart if already in cart -->
+                    <% elsif status == 'reserved' %>
+                      <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
+                        <%= f.error_notification %>
+                        <%= f.hidden_field :user, value: current_user.id %>
+                        <%= f.hidden_field :friend_id, value: reservation.friend.id %>
+                        <%= f.button :button, class: 'card-icon' do %>
+                          <%= icon('fas', 'user-minus') %>
+                        <% end %>
+                      <% end %>
+
+                    <!-- Don't show an icon if something weird happens -->
+                    <% else %>
+                    <% end %>
+                  </div>
+                  <!-- END clickable icons -->
+                </div>
+                <!-- END card description inside picture -->
+              </div>
+              <!-- END card body -->
+            <% end %>
+            <!-- END of set picture -->
           </div>
-              <%= link_to "", friend_path(reservation.friend), class: 'card-link' %>
-            </div>
-            <div class="card-footer">
-              <p class="friend-slogan"> <%= reservation.friend.slogan %></p>
-              <p class="friend-price"><%= reservation.friend.price %> $ </p>
-              <p class="friend-rating">
-                <% reservation.friend.rating.times do %>
+          <!-- END reservation -->
+
+          <!-- Card footer -->
+          <div class="card-footer-cart">
+            <p class="friend-slogan"> <%= reservation.friend.slogan %></p>
+            <p class="friend-price"><%= reservation.friend.price %> $ </p>
+            <!-- Display stars -->
+            <p class="friend-rating">
+              <% reservation.friend.rating.times do %>
                 <i class="fas fa-star full"></i>
-                <% end %>
+              <% end %>
                 <% (5 - reservation.friend.rating).times do %>
-                <i class="far fa-star emtpy"></i>
-                <% end %>
-              </p>
-              <p class="friend-slogan">Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
-                <%= link_to 'Delete from cart', delete_reservation_path(reservation), method: :delete %>
-              </p>
-            </div>
+              <i class="far fa-star emtpy"></i>
+              <% end %>
+            </p>
+            <!-- Display stars ends above this line -->
+            <p class="friend-slogan">
+              Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
+              <%= link_to 'Delete from cart', delete_reservation_path(reservation), method: :delete %>
+            </p>
           </div>
-          <% end %>
-          <% end %>
+          <!-- Card footer ends above this line -->
         </div>
+        <% end %>
+        <!-- END iterate to create cards -->
       </div>
+      </div>
+      <!-- END .card-reservation -->
     </div>
-    <div class="purchase-bar sticky">
-  <div class="sticky">
+    <!-- End cards -->
+  </div>
+  <!-- End container -->
+
+  <!-- Purchase-bar sticky below this line -->
+  <div class="purchase-bar sticky">
+    <div class="sticky">
       <h3 id="total">Total: <%= total_price %>$</h3>
       <h4 id="total">Items: <%= total_items %></h4>
-          <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
-          <%= f.error_notification %>
-          <%= f.hidden_field :total_price, value: total_price %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :reservation, value: @reservations%>
-          <div id="description-button">
-            <%= f.button :submit, 'Buy now', class: 'btn btn-danger btn-lg' %>
-          <% end %>
-    </div>
+      <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
+        <%= f.error_notification %>
+        <%= f.hidden_field :total_price, value: total_price %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :reservation, value: @reservations%>
+        <div id="description-button">
+          <%= f.button :submit, 'Buy now', class: 'btn btn-danger btn-lg' %>
+        </div>
+      <% end %>
     </div>
   </div>
-</div>
+  <!-- Purchase-bar sticky ends above this line -->
 
 </div>
+<!-- END .flex-wrapper -->

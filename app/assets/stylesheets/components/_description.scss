@@ -89,9 +89,10 @@
   margin-bottom: 20px;
 }
 
-#editdelete a{
+.remove-edit-delete-back a{
   text-decoration: none;
   color: black;
+  white-space: nowrap;
   &:hover{
     font-weight: bold;
   }
