@@ -85,20 +85,20 @@
             <%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)
           </div>
 
-          <div id ="editdelete" style="margin-top: 20px;">
+          <div class="remove-edit-delete-back" style="margin-top: 20px;">
           <!-- Remove from cart if in cart -->
             <% if @reserved[0] %>
-              <%= link_to "Remove", reservation_path(@reserved[0]),
+              <%= link_to "Remove from Cart |", reservation_path(@reserved[0]),
                 method: :delete,
-                data: { confirm: "Remove from cart?" } %> |
+                data: { confirm: "Remove from cart?" } %>
             <% end %>
 
           <!-- Edit and Delete if you own this friend -->
             <% if policy(@friend).edit? %>
-              <%= link_to "Edit", edit_friend_path(@friend) %> |
+              <%= link_to "Edit Friend |", edit_friend_path(@friend) %>
             <% end %>
             <% if policy(@friend).destroy? %>
-              <%= link_to "Delete", friend_path(@friend),
+              <%= link_to "Delete Friend |", friend_path(@friend),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
             <% end %>
