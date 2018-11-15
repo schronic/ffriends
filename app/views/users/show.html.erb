@@ -63,25 +63,17 @@
         </div>
       </div>
 
-              <div class="user-info">
-          <div class="user-card-info">
-          <!-- CARD TITLE / Friends-->
-          <div class="user-card-title">
-            <h2>ADDRESSES & PAYMENTS</h2>
-            <%= link_to "Edit", edit_user_registration_path %>
-          </div>
-          <!-- CARD DETAILS -->
-          <div class="user-card-details">
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <p><%= @user.address %></p>
-          </div>
-          </div>
-        </div>
+
 
     </div>
   </div>
 </div>
   </div>
 </div>
+<br>
 
-<%= render 'layouts/card'%>
+<div class="container">
+  <%= render 'layouts/card'%>
+</div>
+
+
