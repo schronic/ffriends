@@ -10,17 +10,13 @@ class PurchasesController < ApplicationController
   end
 
   def new
-    @purchase = current_user.purchases.new
-  end
-
-  def create
-    @purchase = current_user.purchases.new(purchase_params)
+    @purchase = Purchase.create(purchase_params)
     authorize @purchase
-    if @purchase.save
-      redirect_to @purchase
-    else render :new
+    @reservations.each do |reservation|
+      friend = reservation.friend
+      friend.update(user_id:reservation.user_id)
+      friend.update(purchase_id: @purchase.id)
     end
-    redirect_to @purchase
   end
 
   def destroy
