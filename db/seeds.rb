@@ -1,6 +1,6 @@
 puts "Starting the seed..."
 puts "Destroying old data..."
-puts "Creating new users..."
+puts "Creating new users,arenas..."
 
 def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...max]}..." : slogan
@@ -11,13 +11,24 @@ Friend.destroy_all
 Purchase.destroy_all
 User.destroy_all
 
+5.times do
+  arena = Arena.new(
+    name: Faker::DragonBall.character,
+    longitude: Faker::Address.longitude, #=> "-156.65548382095133"
+    latitude: Faker::Address.latitude,
+    capacity: Faker::Number.between(50, 100),
+    level: Arena::LEVEL.sample,
+    )
+  arena.save!
+end
+
 3.times do
 user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
   address: Faker::Address.street_address,
   first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
+  last_name: Faker::Name.last_name,
   )
 user.save!
 rand(4).times do
@@ -50,4 +61,4 @@ rand(4).times do
     end
   end
 end
-puts "3 Users were just created. Each user has purchases of a few friends!"
+puts "3 Users were just created. Each user has purchases of a few friends! 5 Arenas were created"
