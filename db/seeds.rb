@@ -43,7 +43,7 @@ rand(4).times do
       wins: Faker::Number.between(1, 10),
       losses: Faker::Number.between(1, 10),
       description: slogan,
-      purchase: purchase,
+      purchase: nil,
       )
       friend.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/200/300/?random')['url']
       friend.save!

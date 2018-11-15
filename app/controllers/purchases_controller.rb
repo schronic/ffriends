@@ -14,9 +14,10 @@ class PurchasesController < ApplicationController
     authorize @purchase
     @reservations.each do |reservation|
       friend = reservation.friend
-      friend.update(user_id:reservation.user_id)
+      friend.update(user_id: reservation.user_id)
       friend.update(purchase_id: @purchase.id)
     end
+    Reservation.where(user_id: current_user.id).destroy_all
   end
 
   def destroy
