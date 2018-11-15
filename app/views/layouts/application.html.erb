@@ -9,18 +9,23 @@
     <%= action_cable_meta_tag %>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Open+Sans:400,800|Roboto:200,300,400,800" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+
+
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <div class='body-content'>
       <%= yield %>
     </div>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag 'application' %>
 
-    <%= javascript_include_tag "application" %>
+
+    <%= javascript_pack_tag "map" %>
     <%= custom_bootstrap_flash %>
   </body>
 </html>
