@@ -16,7 +16,7 @@ class FriendsController < ApplicationController
   def show
     @reservation = Reservation.new
     if user_signed_in?
-      @reserved = Reservation.where(user_id: current_user.id, friend_id: params[:id])
+      @reserved = Reservation.where(user_id: current_user.id, friend_id: params[:id])[0]
     end
     @user = User.find(@friend.user_id)
     # If we change @user to @owner we could show everyone each friend's owner

@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = policy_scope(Reservation).order(user_id: :desc)
+    @purchase = Purchase.new
   end
 
   def show

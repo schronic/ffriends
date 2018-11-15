@@ -55,16 +55,26 @@
             </div>
           </div>
 
+
+
+
+
+
           <div class="col-md-6" id="friend-description">
             <h3><%= @friend.slogan %></h3>
             <h4> $ <%= @friend.price %> .00</h4>
 
-            <!-- Button for signed-in users to add to cart or show that in cart -->
+            <!-- Button if SIGNED IN-->
             <% if user_signed_in? %>
-              <% if @reserved[0] %>
+              <!-- If already owned by current_user: nothing -->
+              <% if current_user.id == @friend.user_id %>
+                <h3 class='own-friend'>You own this friend!</h3>
+              <!-- If already in shopping cart: Added to cart -->
+              <% elsif @reserved %>
                 <div class='btn btn-danger btn-lg'>
                   Added to cart
                 </div>
+              <!-- If not in shopping cart: Add to cart -->
               <% elsif current_user %>
                 <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
                     <%= f.error_notification %>
@@ -73,34 +83,37 @@
                     <div id="description-button">
                       <%= f.button :submit, 'Add to cart', class: 'btn btn-danger btn-lg' %>
                 <% end %>
+              <!-- If not in cart AND not logged in: (FOR DEBUGGING) -->
               <% else %>
                 <div class='btn btn-danger btn-lg'>
                   Not in cart and not logged in
                 </div>
               <% end %>
 
-            <!-- Button for people that are not signed in  -->
+            <!-- Button if NOT SIGNED IN  -->
             <% else %>
               <%= link_to 'Login to Add', new_user_session_path, class: 'btn btn-danger btn-lg' %>
             <% end %>
 
-              <div id="shipping">
-                <%= icon('fas', 'check') %>
-                <strong> Standard delivery</strong> 3-5 working days
-              </div>
-              <div id="shipping">
-                <%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)
-              </div>
+            <!-- Delivery details -->
+            <div id="shipping">
+              <%= icon('fas', 'check') %>
+              <strong> Standard delivery</strong> 3-5 working days
+            </div>
+            <div id="shipping">
+              <%= icon('fas', 'check') %><strong> Next day delivery</strong> order before 2pm ($100 + flight)
+            </div>
 
-              <% if user_signed_in? %>
-                <div class="remove-edit-delete-back" style="margin-top: 20px;">
-                <!-- Remove from cart if in cart -->
-                <% if @reserved[0] %>
-                  <%= link_to "Remove from Cart |", reservation_path(@reserved[0]),
-                    method: :delete,
-                    data: { confirm: "Remove from cart?" } %>
-                <% end %>
+            <!-- Navigation options based SIGNED IN  -->
+            <% if user_signed_in? %>
+              <div class="remove-edit-delete-back" style="margin-top: 20px;">
+              <!-- Remove from cart if in cart -->
+              <% if @reserved %>
+                <%= link_to "Remove from Cart |", reservation_path(@reserved),
+                  method: :delete,
+                  data: { confirm: "Remove from cart?" } %>
               <% end %>
+            <% end %>
 
               <!-- Edit and Delete if you own this friend -->
               <% if policy(@friend).edit? %>
@@ -111,7 +124,11 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
               <% end %>
+
+              <!-- Back Home for everybody -->
               <%= link_to "Back Home", friends_path %>
+
+
             </div>
           </div>
         </div>
