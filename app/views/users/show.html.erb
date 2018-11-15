@@ -3,85 +3,77 @@
 <div id="user-show">
   <div class="container table-container">
     <div class="row table-row">
-    <div class="col-xs-12 col-md-4 table-col">
-      <!-- PROFILE -->
-      <div id="user-profile">
-        <!-- PROFILE CONTENT -->
-        <div class="style-user-profile">
-          <% avatar =  current_user.picture.present? ?current_user.picture : "http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png" %>
-          <%= cl_image_tag(avatar, width: 150, height: 150, class: "img-circle") %>
-          <h1><%= @user.first_name %></h1>
+      <div class="col-xs-12 col-md-4 table-col">
+        <!-- PROFILE -->
+        <div id="user-profile">
+          <!-- PROFILE CONTENT -->
+          <div class="style-user-profile">
+            <% avatar =  current_user.picture.present? ?current_user.picture : "http://fuuse.net/wp-content/uploads/2016/02/avatar-placeholder.png" %>
+            <%= cl_image_tag(avatar, width: 150, height: 150, class: "img-circle") %>
+            <h1><%= @user.first_name %></h1>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-md-8 table-col">
-      <!-- INFORMATION -->
-      <div class="user-info">
-        <!-- CARD INFORMATION -->
-        <div class="user-card-info">
-          <!-- CARD TITLE / ACCOUNT INFO-->
-          <div class="user-card-title">
-            <h2>ACCOUNT INFO</h2>
-            <%= link_to "Edit", edit_user_registration_path %>
-          </div>
-          <!-- CARD DETAILS -->
-          <div class="user-card-details">
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <p><%= @user.email %></p>
-          </div>
-        </div>
-
-        <!-- CARD INFORMATION -->
+      <div class="col-xs-12 col-md-8 table-col">
+        <!-- INFORMATION -->
         <div class="user-info">
+          <!-- CARD INFORMATION -->
           <div class="user-card-info">
-          <!-- CARD TITLE / ADDRESS-->
-          <div class="user-card-title">
-            <h2>ADDRESSES & PAYMENTS</h2>
-            <%= link_to "Edit", edit_user_registration_path %>
+            <!-- CARD TITLE / ACCOUNT INFO-->
+            <div class="user-card-title">
+              <h2>ACCOUNT INFO</h2>
+              <%= link_to "Edit", edit_user_registration_path %>
+            </div>
+            <!-- CARD DETAILS -->
+            <div class="user-card-details">
+              <p><%= @user.first_name %> <%= @user.last_name %></p>
+              <p><%= @user.email %></p>
+            </div>
           </div>
-          <!-- CARD DETAILS -->
-          <div class="user-card-details">
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <p><%= @user.address %></p>
-          </div>
-          </div>
-        </div>
 
-      <div class="user-info">
-        <!-- CARD INFORMATION -->
-        <div class="user-card-info">
-          <!-- CARD TITLE / ARENAS-->
-          <div class="user-card-title">
-            <h2>YOUR ARENAS</h2>
-            <%= link_to "Edit", edit_user_registration_path %>
+          <!-- CARD INFORMATION -->
+          <div class="user-info">
+            <div class="user-card-info">
+              <!-- CARD TITLE / ADDRESS-->
+              <div class="user-card-title">
+                <h2>ADDRESSES & PAYMENTS</h2>
+                <%= link_to "Edit", edit_user_registration_path %>
+              </div>
+              <!-- CARD DETAILS -->
+              <div class="user-card-details">
+                <p><%= @user.first_name %> <%= @user.last_name %></p>
+                <p><%= @user.address %></p>
+              </div>
+            </div>
           </div>
-          <!-- CARD DETAILS -->
-          <div class="user-card-details">
-            <p>You have not saved a favorite arena</p>
-            <p></p>
+
+          <div class="user-info">
+            <!-- CARD INFORMATION -->
+            <div class="user-card-info">
+              <!-- CARD TITLE / ARENAS-->
+              <div class="user-card-title">
+                <h2>YOUR ARENAS</h2>
+                <%= link_to "Edit", edit_user_registration_path %>
+              </div>
+              <!-- CARD DETAILS -->
+              <div class="user-card-details">
+                <p>You have not saved a favorite arena</p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-info">
+            <div class="user-card-info">
+              <div class="user-card-title">
+                <h2>CURRENT FRIENDS</h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-              <div class="user-info">
-          <div class="user-card-info">
-          <!-- CARD TITLE / Friends-->
-          <div class="user-card-title">
-            <h2>ADDRESSES & PAYMENTS</h2>
-            <%= link_to "Edit", edit_user_registration_path %>
-          </div>
-          <!-- CARD DETAILS -->
-          <div class="user-card-details">
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <p><%= @user.address %></p>
-          </div>
-          </div>
-        </div>
-
     </div>
   </div>
 </div>
-  </div>
-</div>
 
-<%= render 'layouts/card'%>
+          <%= render 'layouts/card'%>
