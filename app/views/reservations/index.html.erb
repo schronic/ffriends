@@ -34,7 +34,7 @@
                 <% end %>
               </p>
               <p class="friend-slogan">Added: <em><%= reservation.updated_at.strftime("%b %e, %l:%M %p") %></em>
-                <%= link_to 'Delete from carrt', delete_reservation_path(reservation) %>
+                <%= link_to 'Delete from cart', delete_reservation_path(reservation), method: :delete %>
               </p>
             </div>
           </div>
