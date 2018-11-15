@@ -5,6 +5,10 @@ class PurchasePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    current_user_or_admin?
+  end
+
   def create?
     current_user_or_admin?
   end
@@ -21,5 +25,9 @@ class PurchasePolicy < ApplicationPolicy
 
   def current_user_or_admin?
     record.user == user || admin?
+  end
+
+  def admin?
+    user.admin
   end
 end

@@ -44,10 +44,10 @@
   <div class="sticky">
       <h3 id="total">Total: <%= total_price %>$</h3>
       <h4 id="total">Items: <%= total_items %></h4>
-          <%= simple_form_for @purchase, url: new_purchase_path, method: :get do |f| %>
+          <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
           <%= f.error_notification %>
           <%= f.hidden_field :total_price, value: total_price %>
-          <%= f.hidden_field :user_id, value: @reservations.first.user_id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :reservation, value: @reservations%>
           <div id="description-button">
             <%= f.button :submit, 'Buy now', class: 'btn btn-danger btn-lg' %>
@@ -58,21 +58,5 @@
 </div>
 
 </div>
-<br>
 
-<div class="cart-details">
-  <h3>Cart Details:</h3>
-   <p>
-      Items:  <%= @reservations.map { |reservation| reservation.friend}.count %>
-  </p>
-  <p>
-  Total: <%= @reservations.map { |reservation| reservation.friend.price }.sum %> €
-    </p>
-
-<div id="purchase-button">
-  <%= link_to "Purchase", edit_user_registration_path, class: 'btn btn-danger btn-lg' %>
-</div>
-
-</div>
-</div>
 
