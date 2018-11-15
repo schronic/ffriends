@@ -11,7 +11,7 @@ Friend.destroy_all
 Purchase.destroy_all
 User.destroy_all
 
-3.times do
+10.times do
 user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
