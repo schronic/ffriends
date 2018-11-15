@@ -3,7 +3,7 @@ puts "Destroying old data..."
 puts "Creating new users,arenas..."
 
 def truncate(slogan, max)
-  slogan.length > max ? "#{slogan[0...max]}..." : slogan
+  slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
 Reservation.destroy_all
@@ -41,7 +41,7 @@ rand(4).times do
   purchase.save!
   rand(5).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
-    short_slogan = truncate(slogan, 35)
+    short_slogan = truncate(slogan, 80)
     friend = Friend.new(
       rating: Friend::RATING.sample,
       strength: Friend::STRENGTH.sample,

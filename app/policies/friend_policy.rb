@@ -24,10 +24,6 @@ class FriendPolicy < ApplicationPolicy
     current_user_or_admin?
   end
 
-  def upload?
-    true
-  end
-
   private
 
   def current_user_or_admin?

@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   patch  '/cart/:id',      to: 'reservations#update'
   put    '/cart/:id',      to: 'reservations#update'
   delete '/cart/:id',      to: 'reservations#destroy',as: 'delete_reservation'
-  get    '/upload/new',    to: 'friends#upload',         as: 'upload_friend'
-  post   '/upload',        to: 'friends#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

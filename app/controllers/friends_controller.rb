@@ -3,6 +3,8 @@ class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @reservation = Reservation.new
+    @reservations = Reservation.all
     if params[:term]
       @friends = policy_scope(Friend).order(created_at: :asc)
       @friends = Friend.where(params[:term].to_sym => params[:attr])
@@ -13,8 +15,12 @@ class FriendsController < ApplicationController
 
   def show
     @reservation = Reservation.new
+    if user_signed_in?
+      @reserved = Reservation.where(user_id: current_user.id, friend_id: params[:id])[0]
+    end
     @reviews = Review.where(friend_id: @friend.id)
     @user = User.find(@friend.user_id)
+    # If we change @user to @owner we could show everyone each friend's owner
   end
 
   def new
@@ -52,11 +58,6 @@ class FriendsController < ApplicationController
   def destroy
     @friend.destroy
     redirect_to friends_path
-  end
-
-  def upload
-    @friend = Friend.find(params[:format])
-    authorize @friend
   end
 
 private
