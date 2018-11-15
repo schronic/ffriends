@@ -1,0 +1,7 @@
+<%= simple_form_for [@friend, @review] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :friend_id, value: params[:friend_id] %>
+  <%= f.button :submit, "Upload Review"%>
+<% end %>

@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="row">
-        <div style="padding: 0px 50px">
+        <div style="padding: 0px 50px;">
           <% if @friend.picture.present? %>
             <div class="description-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(@friend.picture) %>); background-size: cover; background-position: center;">
           <% else %>
@@ -13,6 +13,13 @@
               </div>
             </div>
           </div>
+
+
+
+
+
+<!-- messed up somewhere in here -->
+
           <div class="row" id="details" style="margin-top: 15px;">
             <div class="nav-tabs-wrapper">
               <ul class="nav nav-tabs" id="myTabs2" role="tablist">
@@ -22,6 +29,7 @@
                 <li class="nav-underline" role="presentation"></li>
               </ul>
 
+              <!-- .tab-content -->
               <div class="tab-content" id="myTabContent2">
                 <div class="tab-pane fade in active" role="tabpanel" id="home2" aria-labelledby="home-tab">
                   <p><strong>Description:</strong> <%= @friend.description %></p>
@@ -32,8 +40,8 @@
                   <p><strong>Weight:</strong> <%= @friend.weight %></p>
                   <br>
                   <p><strong>Owner:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
-
                 </div>
+
                 <div class="tab-pane fade" role="tabpanel" id="profile2" aria-labelledby="profile-tab">
                   <p><strong>Strength:</strong> <%= @friend.strength %></p>
                   <p><strong>Agility:</strong> <%= @friend.agility %></p>
@@ -43,26 +51,62 @@
                     <% end %>
                     <% (5 - @friend.rating).times do %>
                     <i class="far fa-star emtpy"></i>
-                    <% end %></p>
-                    <p><strong>Wins:</strong> <%= @friend.wins %> <strong>/ Losses:</strong> <%= @friend.losses %>
-                    </p>
-                  </div>
-                  <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
-                    <p>Reviews</p>
-                  </div>
+                    <% end %>
+                  </p>
+                  <p><strong>Wins:</strong> <%= @friend.wins %> <strong>/ Losses:</strong> <%= @friend.losses %>
+                  </p>
                 </div>
+
+                <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
+                  <p>Reviews</p>
+                  <%= link_to 'new review', new_friend_review_path(@friend) %>
+                  <br>
+                  <% @reviews.each do |review| %>
+                    <%= review.content %>
+                    <% user = User.find(review.user_id) %>
+                    <em><%= user.first_name %> <%= user.last_name %></em>
+                    <br>
+                  <% end %>
+                </div>
+
+                <div class="tab-pane fade" role="tabpanel" id="dropdown12" aria-labelledby="dropdown1-tab">
+                  <p>Reviews</p>
+                  <%= link_to 'new review', new_friend_review_path(@friend) %>
+                  <br>
+                  <% @reviews.each do |review| %>
+                    <%= review.content %>
+                    <% user = User.find(review.user_id) %>
+                    <em><%= user.first_name %> <%= user.last_name %></em>
+                    <br>
+                  <% end %>
+                </div>
+
               </div>
+              <!-- END tab-content -->
             </div>
+            <!-- END nav-tabs-wrapper -->
           </div>
+          <!-- END .row -->
+
+
+<!-- messed up somewhere above here -->
 
 
 
-
+        </div>
+        <!-- END style="padding: 0px 50px;" -->
 
 
           <div class="col-md-6" id="friend-description">
             <h3><%= @friend.slogan %></h3>
             <h4> $ <%= @friend.price %> .00</h4>
+
+
+
+
+
+
+
 
             <!-- Button if SIGNED IN-->
             <% if user_signed_in? %>
@@ -139,3 +183,5 @@
     </div>
   </div>
 </div>
+
+
