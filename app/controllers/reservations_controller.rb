@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :edit, :update]
   # before_action :set_friend, only: [:create]
   skip_before_action :authenticate_user!, only: %i[index show new create edit update destroy]
 
@@ -12,7 +12,8 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = current_user.reservations.new
+    @reservation = Reservations.new
+    @reservation.user_id = current_user
     authorize @reservation
   end
 
@@ -39,8 +40,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = Reservation.find_by(friend_id: params[:id])
     @reservation.destroy
-    redirect_to reservations_path
+    redirect_to reservation_path
   end
 
 private
