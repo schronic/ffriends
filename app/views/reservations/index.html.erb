@@ -44,13 +44,20 @@
       </div>
     </div>
     <div class="purchase-bar sticky">
-      <div class="sticky">
-        <h3 id="total">Total: <%= total_price %>$</h3>
-        <h4 id="total">Items: <%= total_items %></h4>
-        <%= render 'purchases/new' %>
-        </div>
-      </div>
+  <div class="sticky">
+      <h3 id="total">Total: <%= total_price %>$</h3>
+      <h4 id="total">Items: <%= total_items %></h4>
+          <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
+          <%= f.error_notification %>
+          <%= f.hidden_field :total_price, value: total_price %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :reservation, value: @reservations%>
+          <div id="description-button">
+            <%= f.button :submit, 'Buy now', class: 'btn btn-danger btn-lg' %>
+          <% end %>
+    </div>
     </div>
   </div>
 </div>
-<br>
+
+</div>

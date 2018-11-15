@@ -1,0 +1,42 @@
+<% total_price = 0 %>
+<% total_items = 0 %>
+<% @reservations.each do |reservation| %>
+<% total_price += reservation.friend.price %>
+<% total_items += 1 %>
+<% end  %>
+
+<div class="container">
+  <div class="confirmation">
+  <div class="thanks">
+    <h2> Thank you for your order </h2>
+  </div>
+  <div class="order-number">
+    <h3>Your order-number is: <%= SecureRandom.hex  %></h3>
+  </div>
+  <div>
+  <h4 class="detaild-order-recipe">Items:<%= total_items %></h4>
+
+      <div>
+      <div>
+        <% @reservations.each do |reservation| %>
+        <div>
+          <% if reservation.friend.picture.present? %>
+          <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url(<%= cl_image_path(reservation.friend.picture) %>);" class="confirmation-image">
+            <% else %>
+            <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url('https://picsum.photos/300/300/?random');" class="confirmation-image">
+              <% end %>
+              <div>
+                <<!-- p class="confirmation-image">ID <%= reservation.friend.id %> </p> -->
+              </div>
+            </div>
+
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <h5 class="detaild-order-recipe">Total: $ <%= total_price %></h5>
+  <h3 class="detaild-order-recipe">Your friend will arrive asap</h3>
+  </div>
+ </div>
+</div>

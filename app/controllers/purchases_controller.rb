@@ -9,13 +9,7 @@ class PurchasesController < ApplicationController
   def show
   end
 
-  def new
-    @purchase = Purchase.new
-    authorize @purchase
-  end
-
   def create
-    raise
     @purchase = Purchase.create(purchase_params)
     authorize @purchase
     @reservations.each do |reservation|

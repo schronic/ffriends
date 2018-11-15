@@ -8,6 +8,10 @@ class PurchasePolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    current_user_or_admin?
+  end
+
   def create?
     current_user_or_admin?
   end
