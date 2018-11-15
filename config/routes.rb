@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'friends#index'
 
   devise_for :users
-  resources :friends
+  resources :friends do
+    resources :reviews
+  end
   resources :purchases, except: [:edit, :update]
   resources :users, only: [:show]
 
