@@ -57,13 +57,17 @@
   </div>
 </div>
 
-<!-- on click we need to set the purchase id and change the user id -->
+</div>
+<br>
 
-onclick:
-@purchase = purchase.create(total_price: total_price,user_id: @reservation.first.user_id)
-@reservations.each do |reservation|
-  reservation.friend.user_id = reservation.user_id
-  reservation.friend.purchase_id = @purchase.id
-end
+<div class="cart-details">
+  <h3>Shopping Bag:</h3>
+  <p>
+  Total: <%= @reservations.map { |reservation| reservation.friend.price }.sum %> €
+  <%= @reservations.map { |reservation| reservation.friend}.count %> Items
+  </p>
+  <a href=""> purchase</a>
 
+</div>
+</div>
 
