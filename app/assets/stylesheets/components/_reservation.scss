@@ -1,8 +1,8 @@
 #buy-container {
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
 }
 
 #buy-box {
@@ -17,7 +17,6 @@
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  height: 80vh;
   padding: 20px;
   border-right: 1px solid rgba(0,0,0,0.2);
 }

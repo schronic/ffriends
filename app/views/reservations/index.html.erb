@@ -5,15 +5,21 @@
 <% total_items += 1 %>
 <% end %>
 <div class="container-fluid">
+  <div>
+
+  </div>
   <div class="row">
     <!-- CARDS -->
-    <div class="col-xs-8 cards-container">
+    <div class="col-xs-12 col-md-8">
       <div class="card-holder">
         <%= render 'card_in_cart' %>
       </div>
     </div>
     <!-- BOOKING -->
-    <div class="col-xs-4">
+    <div class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-0">
+      <div class="cards-container">
+
+
       <div id="buy-container" class="text-center">
         <div id="buy-box">
           <h3 id="total">Total: <%= total_price %>$</h3>
@@ -30,5 +36,6 @@
         </div>
       </div>
     </div>
+      </div>
   </div>
 </div>
