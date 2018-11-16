@@ -60,11 +60,43 @@ end
 puts "All done... Get ready to find and fight friends!"
 
 
-arena = Arena.new(
-  name: Meeren
-  latitude: 30
-  langitude: 0
+arenaa = Arena.new(
+  name: 'Meeren',
+  latitude: 30,
+  longitude: 0
   )
-  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
-  arena.save!
+  arenaa.remote_picture_url =  Cloudinary::Uploader.upload('https://creators-images.vice.com/content-images/contentimage/no-slug/356fc9f535c7ac9510fe5b438f1e098d.jpg?crop=0.9160493827160494xw%3A1xh%3Bcenter%2Ccenter&resize=2000%3A*')['url']
+  arenaa.save!
+
+arenab = Arena.new(
+  name: 'Tyria',
+  latitude: 58.3816,
+  longitude: 34.6037
+  )
+  arenab.remote_picture_url =  Cloudinary::Uploader.upload('https://creators-images.vice.com/content-images/contentimage/no-slug/356fc9f535c7ac9510fe5b438f1e098d.jpg?crop=0.9160493827160494xw%3A1xh%3Bcenter%2Ccenter&resize=2000%3A*')['url']
+  arenab.save!
+
+arenac = Arena.new(
+  name: 'Saatarh',
+  latitude: 40.7128,
+  longitude: 74.0060
+  )
+  arenacremote_picture_url =  Cloudinary::Uploader.upload('https://2.bp.blogspot.com/-3djK1nxKrh8/WTSY0pJUMiI/AAAAAAAAS_M/ohLUIO9-kzA1wIyGCPtC68krEJfWmRpfACLcB/s1600/Game-of-Thrones-Kings-Landing.jpg')['url']
+  arenac.save!
+
+arenae = Arena.new(
+  name: 'Lannisport',
+  latitude: 36.7783,
+  longitude: 119.4179
+  )
+  arenae.remote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
+  arenae.save!
+
+arenad = Arena.new(
+  name: 'Volantis',
+  latitude: 31.0461,
+  longitude: 34.8516
+  )
+  arenadremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
+  arenad.save!
 
