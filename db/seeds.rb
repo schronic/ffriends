@@ -5,11 +5,11 @@ def truncate(slogan, max)
 end
 
 puts "Destroying old data..."
-Reservation.destroy_all
-Friend.destroy_all
-Purchase.destroy_all
-User.destroy_all
 Arena.destroy_all
+Reservation.destroy_all
+Purchase.destroy_all
+Friend.destroy_all
+User.destroy_all
 
 puts "Creating arenas so your friends don't have to fight in the street..."
 
