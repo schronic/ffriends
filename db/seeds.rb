@@ -89,8 +89,8 @@ arenae = Arena.new(
   latitude: 36.7783,
   longitude: 119.4179
   )
-  arendaeremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
-  arendae.save!
+  arenae.remote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
+  arenae.save!
 
 arenad = Arena.new(
   name: 'Volantis',
