@@ -65,7 +65,7 @@ arenaa = Arena.new(
   latitude: 30,
   longitude: 0
   )
-  arenaa.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenaa.remote_picture_url =  Cloudinary::Uploader.upload('https://creators-images.vice.com/content-images/contentimage/no-slug/356fc9f535c7ac9510fe5b438f1e098d.jpg?crop=0.9160493827160494xw%3A1xh%3Bcenter%2Ccenter&resize=2000%3A*')['url']
   arenaa.save!
 
 arenab = Arena.new(
@@ -73,7 +73,7 @@ arenab = Arena.new(
   latitude: 58.3816,
   longitude: 34.6037
   )
-  arenab.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenab.remote_picture_url =  Cloudinary::Uploader.upload('https://creators-images.vice.com/content-images/contentimage/no-slug/356fc9f535c7ac9510fe5b438f1e098d.jpg?crop=0.9160493827160494xw%3A1xh%3Bcenter%2Ccenter&resize=2000%3A*')['url']
   arenab.save!
 
 arenac = Arena.new(
@@ -89,7 +89,7 @@ arenae = Arena.new(
   latitude: 36.7783,
   longitude: 119.4179
   )
-  arendaeremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/menirth/images/9/93/Port_little5.jpg/revision/latest?cb=20170728135612')['url']
+  arendaeremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
   arendae.save!
 
 arenad = Arena.new(
@@ -97,6 +97,6 @@ arenad = Arena.new(
   latitude: 31.0461,
   longitude: 34.8516
   )
-  arenadremote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwii-NPP0tneAhVJgZAKHcgYCY8QjRx6BAgBEAU&url=http%3A%2F%2Fhieloyfuego.wikia.com%2Fwiki%2FVolantis&psig=AOvVaw09f129MSEK3jVUGgFrfkpV&ust=1542482871493271')['url']
+  arenadremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
   arenad.save!
 
