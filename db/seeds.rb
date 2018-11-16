@@ -60,11 +60,47 @@ end
 puts "All done... Get ready to find and fight friends!"
 
 
-arena = Arena.new(
-  name: Meeren,
+arenaa = Arena.new(
+  name: 'Meeren',
   latitude: 30,
   langitude: 0
   )
-  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
-  arena.save!
+  arenaa.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenaa.save!
 
+arenab = Arena.new(
+  name: '',
+  latitude: 58.3816,
+  langitude: 34.6037
+  )
+  arenab.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenab.save!
+
+arenac = Arena.new(
+  name: 'Saatarh',
+  latitude: 40.7128,
+  langitude: 74.0060
+  )
+  arenacremote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenacsave!
+
+arenae = Arena.new(
+  name: 'Lannisport',
+  latitude: 36.7783,
+  langitude: 119.4179
+  )
+  arendaeremote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arendaesave!
+
+arenad = Arena.new(
+  name: 'Volantis',
+  latitude: 31.0461,
+  langitude: 34.8516
+  )
+  arenadremote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arenadsave!
+
+
+Volantis, Lannisport, Saatarh , Tyria
+
+Ooros
