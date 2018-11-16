@@ -28,7 +28,8 @@
   strong {
     font-size: 13px;
   }
-  padding: 20px 30px;
+  padding: 20px 30px 50px;
+  margin-bottom: 50px;
 }
 
 
@@ -89,9 +90,10 @@
   margin-bottom: 20px;
 }
 
-#editdelete a{
+.remove-edit-delete-back a{
   text-decoration: none;
   color: black;
+  white-space: nowrap;
   &:hover{
     font-weight: bold;
   }

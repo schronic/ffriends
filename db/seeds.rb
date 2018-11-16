@@ -1,16 +1,17 @@
 puts "Starting the seed..."
-puts "Destroying old data..."
-puts "Creating new users,arenas..."
 
 def truncate(slogan, max)
-  slogan.length > max ? "#{slogan[0...max]}..." : slogan
+  slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
+puts "Destroying old data..."
 Reservation.destroy_all
 Friend.destroy_all
 Purchase.destroy_all
 User.destroy_all
 Arena.destroy_all
+
+puts "Creating arenas so your friends don't have to fight in the street..."
 
 5.times do
   arena = Arena.new(
@@ -23,6 +24,8 @@ Arena.destroy_all
   arena.save!
 end
 
+puts "5 exotic arenas were just built for your fighting friends..."
+puts "Creating friends for finding and fighting..."
 
 10.times do
 user = User.new(
@@ -41,7 +44,7 @@ rand(4).times do
   purchase.save!
   rand(5).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
-    short_slogan = truncate(slogan, 35)
+    short_slogan = truncate(slogan, 80)
     friend = Friend.new(
       rating: Friend::RATING.sample,
       strength: Friend::STRENGTH.sample,
@@ -62,5 +65,6 @@ rand(4).times do
       friend.save!
     end
   end
+  puts "A new user was given up to 4 purchases of up to 5 friends per purchase..."
 end
-puts "3 Users were just created. Each user has purchases of a few friends! 5 Arenas were created"
+puts "All done... Get ready to find and fight friends!"
