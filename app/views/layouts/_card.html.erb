@@ -1,13 +1,13 @@
 <div class="container">
   <div class="cards">
-      <div class="row">
-        <div class="card">
-          <% @friends.each do |friend| %>
-            <div class="col-xs-12 col-sm-6 col-md-3" >
-              <% if friend.picture.present? %>
-                <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(friend.picture) %>);">
-              <% else %>
-                <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= friend.picture %>);">
+    <div class="row">
+      <div class="card">
+        <% @friends.each do |friend| %>
+        <div class="col-xs-12 col-sm-6 col-md-3" >
+          <% if friend.picture.present? %>
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(friend.picture) %>);">
+            <% else %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= friend.picture %>);">
               <% end %>
 
               <!-- Everything inside the picture -->
@@ -24,9 +24,9 @@
                         if current_user.id == friend.user_id
                           status = 'owned'
                         # Mark friend as available
-                        else
-                          status = 'available'
-                        end
+                      else
+                        status = 'available'
+                      end
                         # Mark friend as in cart
 
                         @reservations.each do |reservation|
@@ -34,58 +34,66 @@
                             status = 'reserved'
                             @reservation = reservation
                           end
-                        end %>
+                          end %>
 
-                    <!-- Icon: Friend owned -->
-                    <% if status == 'owned' %>
-                      <%= link_to icon('fas', 'user'), friend_path(friend),
-                        class: 'card-icon',
-                        data: { confirm: "You already own this friend. Go to his page?" } %>
+                          <!-- Icon: Friend owned -->
+                          <% if status == 'owned' %>
+                          <%= link_to icon('fas', 'user'), friend_path(friend),
+                          class: 'card-icon',
+                            data: { confirm: "You already own this friend. Go to his page?" } %>
 
-                    <!-- Icon: Add Friend to cart -->
-                    <% elsif status == 'available' %>
-                      <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
-                        <%= f.error_notification %>
-                        <%= f.hidden_field :user, value: current_user.id %>
-                        <%= f.hidden_field :friend_id, value: friend.id %>
-                        <%= f.button :button, class: 'card-icon' do %>
-                          <%= icon('fas', 'user-plus') %>
-                        <% end %>
-                      <% end %>
+                            <!-- Icon: Add Friend to cart -->
+                            <% elsif status == 'available' %>
+                            <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f| %>
+                            <%= f.error_notification %>
+                            <%= f.hidden_field :user, value: current_user.id %>
+                            <%= f.hidden_field :friend_id, value: friend.id %>
+                            <%= f.button :button, class: 'card-icon' do %>
+                            <%= icon('fas', 'user-plus') %>
+                            <% end %>
+                            <% end %>
 
-                    <!-- Icon: Remove Friend from cart -->
-                    <% elsif status == 'reserved'%>
-                      <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
-                        <%= f.error_notification %>
-                        <%= f.hidden_field :user, value: current_user.id %>
-                        <%= f.hidden_field :friend_id, value: friend.id %>
-                        <%= f.button :button, class: 'card-icon' do %>
-                          <%= icon('fas', 'user-minus') %>
-                        <% end %>
-                      <% end %>
+                            <!-- Icon: Remove Friend from cart -->
+                            <% elsif status == 'reserved'%>
+                            <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
+                            <%= f.error_notification %>
+                            <%= f.hidden_field :user, value: current_user.id %>
+                            <%= f.hidden_field :friend_id, value: friend.id %>
+                            <%= f.button :button, class: 'card-icon' do %>
+                            <%= icon('fas', 'user-minus') %>
+                            <% end %>
+                            <% end %>
 
-                    <!-- Don't show an icon if something weird happens -->
-                    <% else %>
+                            <!-- Don't show an icon if something weird happens -->
+                            <% else %>
+                            <% end %>
+                            <% end %>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card footer -->
+                      <div class="card-footer">
+                        <p class="friend-slogan"> <%= friend.slogan %></p>
+                        <p class="friend-price"><%= friend.price %> $</p>
+                        <p class="friend-rating">
+                          <% friend.rating.times do %>
+                          <i class="fas fa-star full"></i>
+                          <% end %>
+                          <% (5 - friend.rating).times do %>
+                          <i class="far fa-star emtpy"></i>
+                          <% end %>
+                        </p>
+                      </div>
+                    </div>
                     <% end %>
-                  <% end %>
-
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Card footer -->
-            <div class="card-footer">
-              <p class="friend-slogan"> <%= friend.slogan %></p>
-              <p class="friend-price"><%= friend.price %> $</p>
-              <p class="friend-rating">
-                <% friend.rating.times do %>
-                  <i class="fas fa-star full"></i>
-                <% end %>
-                <% (5 - friend.rating).times do %>
-                  <i class="far fa-star emtpy"></i>
-                <% end %>
-              </p>
+          </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

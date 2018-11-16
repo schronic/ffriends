@@ -38,10 +38,11 @@
 
             <!-- Icon to remove from cart if already in cart -->
             <% elsif status == 'reserved' %>
-              <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
+              <%= simple_form_for @reservation, url: @reservation, method: :delete do |f| %>
                 <%= f.error_notification %>
                 <%= f.hidden_field :user, value: current_user.id %>
                 <%= f.hidden_field :friend_id, value: reservation.friend.id %>
+                <%= f.hidden_field :in_cart, value: true %>
                 <%= f.button :button, class: 'card-icon-cart' do %>
                   <%= icon('fas', 'user-minus') %>
                 <% end %>

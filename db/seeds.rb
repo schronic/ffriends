@@ -27,7 +27,7 @@ puts "Creating arenas so your friends don't have to fight in the street..."
     capacity: Faker::Number.between(50, 100),
     level: Arena::LEVEL.sample,
     )
-  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/200/300/?random')['url']
+  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/1000/500/?random')['url']
   arena.save!
 end
 

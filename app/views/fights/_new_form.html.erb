@@ -1,8 +1,21 @@
-<% @friends = Friend.where(user_id: current_user.id) %>
+<% placeholder_name = Faker::Ancient.titan %>
+
+  <div class="container"></div>
 <%= simple_form_for [@arena, @fight] do |f| %>
   <%= f.error_notification %>
-  <%= f.input :name, value: Faker::DragonBall.character %>
-  <%= f.hidden_field :arena_id, value: @arena.id%>
-  <%= f.input :friend_id, collection: @friends %>
-  <%= f.button :submit, "Fight this mf"%>
+    <div class="row">
+  <div class="col-md-6 col-md-offset-3"><h2>Create a fight</h2></div>
+</div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3"> <%= f.input :name, input_html: { value: placeholder_name } %></div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3"><%= f.hidden_field :arena_id, value: @arena.id%></div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3"><%= f.input :friend_id, collection: @friends %></div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3"><%= f.button :submit, "Fight this mf"%></div>
 <% end %>
+</div>
