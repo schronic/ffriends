@@ -4,8 +4,13 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
+Review.destroy_all
+Arena.destroy_all
+Reservation.destroy_all
+Purchase.destroy_all
+Friend.destroy_all
+User.destroy_all
 
-puts "Destroying old data..."
 puts "Creating arenas so your friends don't have to fight in the street..."
 puts "5 exotic arenas were just built for your fighting friends..."
 puts "Creating friends for finding and fighting..."
