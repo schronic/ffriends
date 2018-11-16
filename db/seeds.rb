@@ -61,8 +61,8 @@ puts "All done... Get ready to find and fight friends!"
 
 
 arena = Arena.new(
-  name: Meeren
-  latitude: 30
+  name: Meeren,
+  latitude: 30,
   langitude: 0
   )
   arena.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
