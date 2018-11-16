@@ -4,7 +4,13 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
+
+
 puts "Destroying old data..."
+
+
+Review.destroy_all
+
 Arena.destroy_all
 Reservation.destroy_all
 Purchase.destroy_all
@@ -21,6 +27,7 @@ puts "Creating arenas so your friends don't have to fight in the street..."
     capacity: Faker::Number.between(50, 100),
     level: Arena::LEVEL.sample,
     )
+  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/200/300/?random')['url']
   arena.save!
 end
 

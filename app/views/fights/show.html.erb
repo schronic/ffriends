@@ -1,0 +1,41 @@
+
+
+<% all_opponents = Friend.where.not(user_id: current_user.id) %>
+<% @opponents = all_opponents.where(purchase_id: nil) %>
+
+<% @friend = Friend.find(@fight.friend_id) %>
+
+
+
+<% @opponent = @opponents.sample %>
+<% @friends = [@opponent] %>
+Your opponent is:
+<%= render 'layouts/card' %>
+
+<h1>VS.</h1>
+
+<% @friends = [@friend] %>
+You chose:
+<%= render 'layouts/card' %>
+
+<% own_rating = @friend.rating %>
+<% opp_rating = @opponent.rating %>
+
+<% total = own_rating + opp_rating %>
+<% procentage = rand(total) %>
+
+<% procentage < own_rating ? friend_win = true : opponent_win %>
+
+
+
+The winner is :
+
+  <% if friend_win %>
+  Your Player won
+  <% wins = @friend.wins + 1 %>
+  <% @friend.update(wins: wins) %>
+  <% else%>
+  Player two won
+  <% wins = @opponent.wins + 1 %>
+  <% @opponent.update(wins: wins) %>
+  <% end %>

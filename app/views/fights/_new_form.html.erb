@@ -1,0 +1,8 @@
+<% @friends = Friend.where(user_id: current_user.id) %>
+<%= simple_form_for [@arena, @fight] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, value: Faker::DragonBall.character %>
+  <%= f.hidden_field :arena_id, value: @arena.id%>
+  <%= f.input :friend_id, collection: @friends %>
+  <%= f.button :submit, "Fight this mf"%>
+<% end %>

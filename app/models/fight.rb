@@ -1,9 +1,8 @@
 class Fight < ApplicationRecord
   belongs_to :arena
-  belongs_to :fight
+  belongs_to :friend
 
-  validates :name, presence: true, uniqueness: true
-  validates :date, presence: true, uniqueness: true
+  validates :name, presence: true
 end
 
 
