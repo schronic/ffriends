@@ -2,8 +2,6 @@ class Friend < ApplicationRecord
   belongs_to :user
   belongs_to :purchase, optional: true
   has_many :reservations
-  has_many :users, through: :reservations
-  has_many :friends
 
   RATING = [0, 1, 2, 3, 4, 5]
   STRENGTH = %w[weak strong hulk]

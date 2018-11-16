@@ -1,0 +1,18 @@
+<div class="card-fight" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= @friends.picture %>);">
+  <div class="card-description">
+    <p class="friend-number">ID <%= @friends.id %> </p>
+  </div>
+  <%= link_to '', friend_path(@friends), class: "card-link" %>
+</div>
+<div class="card-footer">
+  <p class="friend-slogan"> <%= @friends.slogan %></p>
+  <p class="friend-price"><%= @friends.price %> $</p>
+  <p class="friend-rating">
+    <% @friends.rating.times do %>
+    <i class="fas fa-star full"></i>
+    <% end %>
+    <% (5 - @friends.rating).times do %>
+    <i class="far fa-star emtpy"></i>
+    <% end %>
+  </p>
+</div>
