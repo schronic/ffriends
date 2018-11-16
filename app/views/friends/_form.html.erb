@@ -11,7 +11,7 @@
 
   <div class="row">
     <div class="col-md-6"><%= f.input :description, input_html: { class: "input-bar"} %></div>
-    <div class="col-md-6"><%= f.input :nationality, label: false, input_html: { class: "input-bar"}, collection: Friend::NATIONALITY %></div>
+    <div class="col-md-6"><%= f.input :nationality, input_html: { class: "input-bar"}, collection: Friend::NATIONALITY %></div>
   </div>
   <div class="row">
     <div class="col-md-12"><%= f.input :slogan , input_html: { class: "input-bar"}%></div>
