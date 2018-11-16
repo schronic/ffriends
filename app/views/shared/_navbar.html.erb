@@ -13,7 +13,6 @@
 
     <!-- Links when logged in -->
     <%= link_to 'Upload friend', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Favourite', new_friend_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'Arenas', arenas_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Shopping cart with number of items -->
@@ -36,6 +35,7 @@
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
+
           <li>
             <%= link_to "#" do %>
             <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
@@ -61,10 +61,45 @@
       <% if user_signed_in? %>
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Upload Friend</a></li>
-        <li><a href="#">Favourite</a></li>
-        <li><a href="">Shopping cart</a></li>
-        <li><a href="">Log out</a></li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_friend_path do %>
+          <i class="fa fa-mask"></i>  <%= t(".new_friend", default: "New Friend") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to arenas_path do %>
+          <i class="fa fa-map-marker-alt"></i>  <%= t(".new_friend", default: "Arenas") %>
+          <% end %>
+        </li>
+
+          <!-- Shopping cart with number of items -->
+        <li>
+          <%= link_to cart_path, class: 'navbar-wagon-link cart' do %>
+            <%= icon('fas', 'shopping-cart') %>
+            <span class='cart-dot'>
+              <span class='cart-num'>
+                <%= @reservations.size %>
+              </span>
+            </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+          <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+
+
       </ul>
       <% else %>
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
