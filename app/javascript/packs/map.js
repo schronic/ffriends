@@ -6,6 +6,7 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = "pk.eyJ1IjoiYWJvc2NoMSIsImEiOiJjam9pdGM1NmMwY3h2M3dxc2lzcWtldmxuIn0.LrstYQkq55nFyLEORNZeOw"; // API key from `.env`
 
+
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/abosch1/cjoixr0vh04452sp1rbht7yue'
