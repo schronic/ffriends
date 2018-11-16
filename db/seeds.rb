@@ -4,13 +4,7 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
-
-
-puts "Destroying old data..."
-
-
 Review.destroy_all
-
 Arena.destroy_all
 Reservation.destroy_all
 Purchase.destroy_all
@@ -18,23 +12,12 @@ Friend.destroy_all
 User.destroy_all
 
 puts "Creating arenas so your friends don't have to fight in the street..."
-
-5.times do
-  arena = Arena.new(
-    name: Faker::DragonBall.character,
-    longitude: Faker::Address.longitude, #=> "-156.65548382095133"
-    latitude: Faker::Address.latitude,
-    capacity: Faker::Number.between(50, 100),
-    level: Arena::LEVEL.sample,
-    )
-  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/1000/500/?random')['url']
-  arena.save!
-end
-
 puts "5 exotic arenas were just built for your fighting friends..."
 puts "Creating friends for finding and fighting..."
 
-10.times do
+
+
+2.times do
 user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
@@ -49,7 +32,7 @@ rand(4).times do
     user: user
     )
   purchase.save!
-  rand(5).times do
+  rand(10).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
     short_slogan = truncate(slogan, 80)
     friend = Friend.new(
@@ -75,3 +58,13 @@ rand(4).times do
   puts "A new user was given up to 4 purchases of up to 5 friends per purchase..."
 end
 puts "All done... Get ready to find and fight friends!"
+
+
+arena = Arena.new(
+  name: Meeren
+  latitude: 30
+  langitude: 0
+  )
+  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://www.google.com.ar/search?biw=1299&bih=669&tbm=isch&sa=1&ei=MhDvW-TfJIKRwgSvgrXQBQ&q=meeren+got&oq=meeren+got&gs_l=img.3..0j0i24k1.1208.1964.0.2283.4.3.0.1.1.0.87.213.3.3.0....0...1c.1.64.img..0.4.216...0i5i30k1j0i10i24k1.0.49ekzBIYgCQ#imgrc=qkyq4tQdSUic-M:')['url']
+  arena.save!
+
