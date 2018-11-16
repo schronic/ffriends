@@ -8,6 +8,7 @@
 
   <div class="col-md-8 col-md-offset-2">
   <h2>Add a Friend</h2>
+  <br>
 
   <div class="row">
     <div class="col-md-6"><%= f.input :description, input_html: { class: "input-bar"} %></div>
@@ -26,10 +27,13 @@
     <div class="col-md-4"><%= f.input :price, input_html: { class: "input-bar"} %></div>
     <div class="col-md-4"><%= f.input :age, input_html: { class: "input-bar"} %></div>
   </div>
-
+<br>
   <%= f.input :picture %>
   <%= f.input :picture_cache, as: :hidden %>
-  <%= f.button :submit, "Upload Friend", class: 'btn button-sumbmit button-lg'%>
+  <br>
+  <div class="button-order">
+    <%= f.button :submit, "Upload Friend", class: 'btn button-sumbmit button-lg'%>
+  </div>
   <% end %>
 </div>
 </div>
