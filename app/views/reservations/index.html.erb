@@ -1,24 +1,24 @@
 <% total_price = 0 %>
 <% total_items = 0 %>
 <% @reservations.each do |reservation| %>
-  <% total_price += reservation.friend.price %>
-  <% total_items += 1 %>
+<% total_price += reservation.friend.price %>
+<% total_items += 1 %>
 <% end %>
-<h1>Shopping Cart</h1>
-
-<div class="flex-wrapper-cart">
-  <div class="container">
-    <!-- cards -->
-    <div class="cards-cart">
-      <%= render 'card_in_cart' %>
+<div class="container-fluid">
+  <div class="row">
+    <!-- CARDS -->
+    <div class="col-xs-8 cards-container">
+      <div class="card-holder">
+        <%= render 'card_in_cart' %>
+      </div>
     </div>
-    <!-- END cards -->
-    <!-- Purchase-bar sticky -->
-    <div class="purchase-bar">
-      <div class="sticky">
-        <h3 id="total">Total: <%= total_price %>$</h3>
-        <h4 id="total">Items: <%= total_items %></h4>
-        <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
+    <!-- BOOKING -->
+    <div class="col-xs-4">
+      <div id="buy-container" class="text-center">
+        <div id="buy-box">
+          <h3 id="total">Total: <%= total_price %>$</h3>
+          <h4 id="total">Items: <%= total_items %></h4>
+          <%= simple_form_for @purchase, url: purchases_path, method: :post do |f| %>
           <%= f.error_notification %>
           <%= f.hidden_field :total_price, value: total_price %>
           <%= f.hidden_field :user_id, value: current_user.id %>
@@ -26,11 +26,9 @@
           <div id="description-button">
             <%= f.button :submit, 'Buy now', class: 'btn btn-danger btn-lg' %>
           </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <!-- END Purchase-bar sticky -->
   </div>
-  <!-- END .container -->
 </div>
-<!-- END .flex-wrapper -->

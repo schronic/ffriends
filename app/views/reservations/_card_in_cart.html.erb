@@ -1,11 +1,10 @@
 <!-- Iterate to create cards -->
 <% @reservations.each do |reservation| %>
 
-
   <!-- Set picture -->
   <% if reservation.friend.picture.present? %>
     <!-- Card-cart -->
-    <div class="card-cart">
+    <div class="friend-cards">
       <div class="card-body-cart" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(reservation.friend.picture) %>);">
         <!-- Everything inside the picture -->
         <div class="card-description-cart">
