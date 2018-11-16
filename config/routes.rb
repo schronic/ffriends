@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :arenas, only:[:show, :index]
-  resources :fights, except: [:edit, :update]
+  resources :arenas, only:[:show, :index] do
+    resources :fights, except: [:edit, :update]
+  end
+
   resources :friends
 
   resources :friends do

@@ -20,7 +20,7 @@
                 <div class="card-btn">
 
                   <!-- Set friend's cart status based on current user -->
-                  <%  if user_signed_in?
+                  <%  if user_signed_in? && !params[:arena_id].present?
                         # Marked friend as owned
                         if current_user.id == friend.user_id
                           status = 'owned'
@@ -29,6 +29,7 @@
                           status = 'available'
                         end
                         # Mark friend as in cart
+
                         @reservations.each do |reservation|
                           if reservation.friend_id == friend.id && reservation.user_id == current_user.id
                             status = 'reserved'
@@ -54,7 +55,7 @@
                       <% end %>
 
                     <!-- Icon: Remove Friend from cart -->
-                    <% elsif status == 'reserved' %>
+                    <% elsif status == 'reserved'%>
                       <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
                         <%= f.error_notification %>
                         <%= f.hidden_field :user, value: current_user.id %>
@@ -68,9 +69,6 @@
                     <% else %>
                     <% end %>
                   <% end %>
-
-
-
 
                 </div>
               </div>
@@ -92,4 +90,4 @@
     <% end %>
   </div>
 </div>
-<% console %>
+
