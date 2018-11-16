@@ -1,41 +1,36 @@
 
+<% @procentage < @own_rating ? friend_win = true : opponent_win = true %>
 
-<% all_opponents = Friend.where.not(user_id: current_user.id) %>
-<% @opponents = all_opponents.where(purchase_id: nil) %>
+<div class="container">
+<div class="flex-fight">
+  <div class="opponent">
+  <% @friends = @opponent %>
+  <h3>Your opponent is</h3>
+  <%= render 'fight_card' %>
+  </div>
+  <div class="vs">
+    <h1>VS.</h1>
+  </div>
+  <div class="friend">
+    <% @friends = @friend %>
+    <h3>Your friend</h3>
+    <%= render 'fight_card' %>
+  </div>
+</div>
+</div>
 
-<% @friend = Friend.find(@fight.friend_id) %>
-
-
-
-<% @opponent = @opponents.sample %>
-<% @friends = [@opponent] %>
-Your opponent is:
-<%= render 'layouts/card' %>
-
-<h1>VS.</h1>
-
-<% @friends = [@friend] %>
-You chose:
-<%= render 'layouts/card' %>
-
-<% own_rating = @friend.rating %>
-<% opp_rating = @opponent.rating %>
-
-<% total = own_rating + opp_rating %>
-<% procentage = rand(total) %>
-
-<% procentage < own_rating ? friend_win = true : opponent_win %>
-
-
-
-The winner is :
-
-  <% if friend_win %>
-  Your Player won
+<div class="winner">
+<% if friend_win %>
+   Congrats: You won
   <% wins = @friend.wins + 1 %>
   <% @friend.update(wins: wins) %>
-  <% else%>
-  Player two won
+  <% losses = @opponent.losses + 1 %>
+  <% @opponent.update(losses: losses) %>
+<% else%>
+  Sorry man, your opponent won...
   <% wins = @opponent.wins + 1 %>
   <% @opponent.update(wins: wins) %>
-  <% end %>
+  <% losses = @friend.losses + 1 %>
+  <% @friend.update(losses: losses) %>
+<% end %>
+</div>
