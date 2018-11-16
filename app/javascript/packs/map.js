@@ -8,19 +8,26 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/abosch1/cjoixr0vh04452sp1rbht7yue'
+    style: 'mapbox://styles/abosch1/cjok0mk8l0gd72soy4outqdf5'
   });
 
   const markers = JSON.parse(mapElement.dataset.markers);
 
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-    .setLngLat([marker.lng, marker.lat])
-    .addTo(map);
-  })
+  // markers.forEach((marker) => {
+  //   new mapboxgl.Marker()
+  //   .setLngLat([marker.lng, marker.lat])
+  //   .addTo(map);
+  // })
 
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = 'url(https://res.cloudinary.com/astridbosch/image/upload/v1542378895/Group.png)';
+    el.style.width = '24px';
+    el.style.height = '50px';
+
+    new mapboxgl.Marker(el)
     .setLngLat([marker.lng, marker.lat])
     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
     .setHTML(marker.infoWindow.content))

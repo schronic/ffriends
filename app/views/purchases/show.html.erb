@@ -17,9 +17,9 @@
   <h4 class="detaild-order-recipe">Items:<%= total_items %></h4>
 
       <div>
-      <div>
+      <div class="items-bag-confirmation">
         <% @friends.each do |friend| %>
-        <div>
+        <div class="items-bag-confirmation">
           <% if friend.picture.present? %>
           <div style="background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.1)), url(<%= cl_image_path(friend.picture) %>);" class="confirmation-image">
             <% else %>

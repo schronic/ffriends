@@ -4,30 +4,34 @@
 
 <%= simple_form_for @friend do |f| %>
 <%= f.error_notification %>
-<div class="col-md-8 col-md-offset-2">
+<div class="container">
+
+  <div class="col-md-8 col-md-offset-2">
   <h2>Add a Friend</h2>
 
   <div class="row">
-    <div class="col-md-6"><%= f.input :description %></div>
-    <div class="col-md-6"><%= f.input :nationality, collection: Friend::NATIONALITY %></div>
+    <div class="col-md-6"><%= f.input :description, input_html: { class: "input-bar"} %></div>
+    <div class="col-md-6"><%= f.input :nationality, input_html: { class: "input-bar"}, collection: Friend::NATIONALITY %></div>
   </div>
   <div class="row">
-    <div class="col-md-12"><%= f.input :slogan %></div>
+    <div class="col-md-12"><%= f.input :slogan , input_html: { class: "input-bar"}%></div>
   </div>
   <div class="row">
-    <div class="col-md-4"><%= f.input :strength, collection: Friend::STRENGTH %></div>
-    <div class="col-md-4"><%= f.input :weight, collection: Friend::WEIGHT %></div>
-    <div class="col-md-4"><%= f.input :height, collection: Friend::HEIGHT %></div>
+    <div class="col-md-4"><%= f.input :strength,input_html: { class: "input-bar"}, collection: Friend::STRENGTH %></div>
+    <div class="col-md-4"><%= f.input :weight, input_html: { class: "input-bar"}, collection: Friend::WEIGHT %></div>
+    <div class="col-md-4"><%= f.input :height, input_html: { class: "input-bar"},collection: Friend::HEIGHT %></div>
   </div>
   <div class="row">
-    <div class="col-md-4"><%= f.input :agility, collection: Friend::AGILITY %></div>
-    <div class="col-md-4"><%= f.input :price %></div>
-    <div class="col-md-4"><%= f.input :age %></div>
+    <div class="col-md-4"><%= f.input :agility,input_html: { class: "input-bar"}, collection: Friend::AGILITY %></div>
+    <div class="col-md-4"><%= f.input :price, input_html: { class: "input-bar"} %></div>
+    <div class="col-md-4"><%= f.input :age, input_html: { class: "input-bar"} %></div>
   </div>
 
   <%= f.input :picture %>
   <%= f.input :picture_cache, as: :hidden %>
-  <%= f.button :submit, "Upload Friend", class: 'btn button-primary button-lg'%>
+  <%= f.button :submit, "Upload Friend", class: 'btn button-sumbmit button-lg'%>
   <% end %>
 </div>
+</div>
+
 

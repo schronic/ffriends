@@ -1,10 +1,28 @@
 
-<div class="contianer">
+<style>
+.marker {
+    cursor: pointer;
+    background-size: contain;
+}
+</style>
+
+
+
+<div class="container">
+  <div class="fight-box-container">
+    <br>
+    <h3> OUR </h2>
+    <h3> ARENAS </h2>
+      <br>
+    <p> Our fights take place in the most dangerous places of the world.</p>
+    <p> Select your arena to let the bodies hit the floor. </p>
+  </div>
+  <br>
   <div class="arenas-map">
     <div
   id="map"
-  style="width: 600px;
-  height: 600px;"
+  style="width: 800px;
+  height: 400px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
   </div>

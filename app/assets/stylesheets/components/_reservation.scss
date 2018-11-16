@@ -1,3 +1,37 @@
+#buy-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buy-box {
+  background-color: white;
+  padding: 20px 100px;
+  &:hover {
+    box-shadow: 2px 2px 3px #e0e0e0;
+  }
+}
+
+.card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 80vh;
+  padding: 20px;
+  border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+.cards-container {
+  padding: 0px;
+}
+
+.friend-cards {
+  margin: 10px 0px;
+  width: 50%;
+  padding: 0 20px;
+}
+
 .flex-wrapper {
   display: flex;
   padding: 30px;
@@ -5,13 +39,14 @@
 }
 
 .purchase-bar {
+  display:flex;
 
   // justify-content: center;
   width: 50%;
   // background-color: $red;
 }
 
-.sticky {
+.sticky2 {
   position: sticky;
   display: flex;
   flex-direction: column;
@@ -21,9 +56,20 @@
   align-items: center;
   justify-content: center;
   // width:;
-  background-color: #ddd;
+  background-color: white;
   top: 100px;
+  font-family: "Montserrat";
+  font-size: 20px;
+  h3{
+     font-family: "Montserrat";
+  font-size: 30px;
+  }
 }
+
+// .cards-cart{
+//   display:flex;
+//   margin:15px;
+// }
 
 .reservation-btn {
   padding: 10px;
@@ -109,3 +155,5 @@
   background-size: cover;
   background-position: center;
 }
+
+
