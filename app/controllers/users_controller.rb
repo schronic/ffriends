@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy, :edit, :update]
 
   def show
     @friends = Friend.where(user_id: @user)
@@ -10,10 +10,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    raise
     @user = User.new(user_params)
     @user.save
     redirect_to friends_path
+  end
+
+  def edit
+
+  end
+
+  def update
+    raise
   end
 
   def destroy
