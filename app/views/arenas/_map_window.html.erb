@@ -1,3 +1,16 @@
-<%= arena.name.upcase%>
-<br>
-<%= link_to 'View arena', arena_path(arena) %>
+
+
+<div class="map-window-container">
+  <div class="map-window-elements">
+  <div class="map-window-title">
+      <h2> ARENA </h2>
+    <h3>  <%= arena.name.upcase%></h3>
+  </div>
+  <br>
+<div class="map-window-view">
+  <p> <%= link_to 'VIEW ARENA', arena_path(arena) %></p>
+</div>
+  </div>
+
+</div>
+
