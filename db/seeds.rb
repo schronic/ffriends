@@ -4,8 +4,6 @@ def truncate(slogan, max)
   slogan.length > max ? "#{slogan[0...(max-3)]}..." : slogan
 end
 
-puts "Destroying old data..."
-
 Review.destroy_all
 Arena.destroy_all
 Reservation.destroy_all
@@ -14,23 +12,10 @@ Friend.destroy_all
 User.destroy_all
 
 puts "Creating arenas so your friends don't have to fight in the street..."
-
-5.times do
-  arena = Arena.new(
-    name: Faker::DragonBall.character,
-    longitude: Faker::Address.longitude, #=> "-156.65548382095133"
-    latitude: Faker::Address.latitude,
-    capacity: Faker::Number.between(50, 100),
-    level: Arena::LEVEL.sample,
-    )
-  arena.remote_picture_url =  Cloudinary::Uploader.upload('https://picsum.photos/1000/500/?random')['url']
-  arena.save!
-end
-
 puts "5 exotic arenas were just built for your fighting friends..."
 puts "Creating friends for finding and fighting..."
 
-10.times do
+5.times do
 user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
@@ -45,7 +30,7 @@ rand(4).times do
     user: user
     )
   purchase.save!
-  rand(5).times do
+  rand(10).times do
     slogan = Faker::MostInterestingManInTheWorld.quote
     short_slogan = truncate(slogan, 80)
     friend = Friend.new(
