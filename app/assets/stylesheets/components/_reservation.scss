@@ -5,12 +5,23 @@
 }
 
 .purchase-bar {
+
+  // justify-content: center;
   width: 50%;
-  background-color: $light-gray;
+  // background-color: $red;
 }
 
 .sticky {
   position: sticky;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 100px;
+  margin: 0px 20px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  // width:;
+  background-color: #ddd;
   top: 100px;
 }
 

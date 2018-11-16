@@ -161,20 +161,16 @@
 
             <!-- Edit and Delete if you own this friend -->
             <% if policy(@friend).edit? %>
-            <%= link_to "Edit Friend |", edit_friend_path(@friend) %>
+            <%= link_to "Edit", edit_friend_path(@friend) %> |
             <% end %>
             <% if policy(@friend).destroy? %>
-            <%= link_to "Delete Friend |", friend_path(@friend),
+            <%= link_to "Delete", friend_path(@friend),
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
+            data: { confirm: "Are you sure?" } %> |
             <% end %>
             <% if policy(@friend).edit? && policy(@friend).create? %>
             <%= link_to "Sell", new_friend_path(term: @friend)%>
             <% end %>
-
-            <!-- Back Home for everybody -->
-            <%= link_to "Back Home", friends_path %>
-
 
           </div>
         </div>
