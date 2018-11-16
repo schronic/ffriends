@@ -1,21 +1,23 @@
 <% placeholder_name = Faker::Ancient.titan %>
-
+<br>
   <div class="container"></div>
 <%= simple_form_for [@arena, @fight] do |f| %>
   <%= f.error_notification %>
     <div class="row">
   <div class="col-md-6 col-md-offset-3"><h2>Create a fight</h2></div>
 </div>
+<br>
   <div class="row">
-  <div class="col-md-6 col-md-offset-3"> <%= f.input :name, input_html: { value: placeholder_name } %></div>
+  <div class="col-md-6 col-md-offset-3"> <%= f.input :name, input_html: { value: placeholder_name }, input_html: { class: "input-bar"} %></div>
   </div>
   <div class="row">
-  <div class="col-md-6 col-md-offset-3"><%= f.hidden_field :arena_id, value: @arena.id%></div>
+  <div class="col-md-6 col-md-offset-3"><%= f.hidden_field :arena_id, value: @arena.id, input_html: { class: "input-bar"} %></div>
   </div>
   <div class="row">
-  <div class="col-md-6 col-md-offset-3"><%= f.input :friend_id, collection: @friends %></div>
+  <div class="col-md-6 col-md-offset-3"><%= f.input :friend_id, collection: @friends, input_html: { class: "input-bar"} %></div>
   </div>
   <div class="row">
   <div class="col-md-6 col-md-offset-3"><%= f.button :submit, "Fight this mf"%></div>
 <% end %>
 </div>
+
