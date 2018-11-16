@@ -27,9 +27,11 @@
     <div class="col-md-4"><%= f.input :price, input_html: { class: "input-bar"} %></div>
     <div class="col-md-4"><%= f.input :age, input_html: { class: "input-bar"} %></div>
   </div>
+  <br>
 
   <%= f.input :picture %>
   <%= f.input :picture_cache, as: :hidden %>
+  <br>
   <%= f.button :submit, "Upload Friend", class: 'btn button-sumbmit button-lg'%>
   <% end %>
 </div>
