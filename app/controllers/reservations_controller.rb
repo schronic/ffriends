@@ -41,7 +41,12 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation.destroy
-    redirect_to friends_path
+    @reservations = Reservation.all
+    if params.dig(:reservation, :in_cart) && @reservations.any? # == 'true' (not a boolean in params)
+      redirect_to cart_path
+    else
+      redirect_to friends_path
+    end
     # split with if/else based on where you were when removed from cart
     # redirect_to cart_path
   end

@@ -3,6 +3,7 @@ class FriendsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+
     @reservation = Reservation.new
     @reservations = Reservation.all
     if params[:term]
@@ -42,11 +43,12 @@ class FriendsController < ApplicationController
   end
 
   def edit
+    authorize @friend
   end
 
   def update
     @friend.update(friend_params)
-    if params[:commit] = "Upload Friend"
+    if params[:commit] == "Upload Friend"
       @friend.update(purchase_id: nil)
     end
     if @friend.save
