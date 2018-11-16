@@ -1,0 +1,50 @@
+<!-- Everything inside the picture -->
+<div class="card-description-cart">
+
+  <!-- Friend ID and clickable card -->
+  <%= link_to "", friend_path(@reserv.friend), class: 'card-link-cart' %>
+  <p class="friend-number-cart">ID <%= @reserv.friend.id %> </p>
+  <!-- END friend ID and clickable card -->
+
+  <!-- Clickable icons on cart -->
+  <div class="card-btn-cart">
+    <!-- Set friend's cart status based on current user -->
+    <% status = 'available' %>
+    <% @reservations.each do |reservation|
+      if reservation.user_id == current_user.id
+        status = 'reserved'
+        @reservation = reservation
+      end
+    end %>
+
+    <!-- Icon to add to cart if not already in cart -->
+    <% if status == 'available' %>
+      <%= simple_form_for @reservation, url: create_reservation_path, method: :post do |f|
+        f.error_notification
+        f.hidden_field :user, value: current_user.id
+        f.hidden_field :friend_id, value: reservation.friend.id
+        f.button :button, class: 'card-icon-cart' do %>
+          <%= icon('fas', 'user-plus') %>
+        <% end
+      end %>
+
+    <!-- Icon to remove from cart if already in cart -->
+    <% elsif status == 'reserved' %>
+      <%= simple_form_for @reservation, url: reservation_path(@reservation), method: :delete do |f| %>
+        <%= f.error_notification %>
+        <%= f.hidden_field :user, value: current_user.id %>
+        <%= f.hidden_field :friend_id, value: reservation.friend.id %>
+        <%= f.button :button, class: 'card-icon-cart' do %>
+          <%= icon('fas', 'user-minus') %>
+        <% end %>
+      <% end %>
+
+    <!-- Don't show an icon if something weird happens -->
+    <% else %>
+    <% end %>
+  </div>
+  <!-- END clickable icons -->
+</div>
+<!-- END card description inside picture -->
+
+
