@@ -71,37 +71,30 @@
   }
 }
 
-
 .card-footer {
   height: 110px;
+  .friend-slogan {
+    font-weight:bold;
+    font-family: Roboto;
+    font-size: 14px;
+    margin-top:0px;
+    margin-bottom:0px;
+    height: 40px;
+  }
+  .friend-price {
+    margin: 0 0 2px;
+    font-size:14px;
+    padding:0;
+    font-size: 14px;
+  }
+  .friend-rating {
+    font-size: 14px;
+    line-height: normal !important;
+    max-height: 22px !important;
+    text-overflow: ellipsis !important;
+  }
 }
 
-.card-footer-cart {
-  height: 140px;
-}
-
-.friend-rating{
-  font-size: 14px;
-  line-height: normal !important;
-  max-height: 22px !important;
-  text-overflow: ellipsis !important;
-}
-
-.friend-price{
-  margin: 0 0 2px;
-  font-size:14px;
-  padding:0;
-  font-size: 14px;
-
-}
-
-.friend-slogan{
-  font-weight:bold;
-  font-family: Roboto;
-  font-size: 14px;
-  margin-top:0px;
-  margin-bottom:0px;
-}
 
 .description-body {
   background-size: cover;
