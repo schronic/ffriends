@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2018_11_16_172855) do
 
   create_table "arenas", force: :cascade do |t|
     t.string "name"
-    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
