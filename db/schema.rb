@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_172855) do
+ActiveRecord::Schema.define(version: 2018_11_15_210119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "arenas", force: :cascade do |t|
     t.string "name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_172855) do
   end
 
   add_foreign_key "fights", "arenas"
-  add_foreign_key "fights", "fights", column: "friend_id"
+  add_foreign_key "fights", "friends"
   add_foreign_key "friends", "purchases"
   add_foreign_key "friends", "users"
   add_foreign_key "purchases", "users"

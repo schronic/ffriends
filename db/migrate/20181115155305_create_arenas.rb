@@ -3,8 +3,6 @@ class CreateArenas < ActiveRecord::Migration[5.2]
     create_table :arenas do |t|
       t.string :name
       t.string :address
-      t.integer :capacity
-      t.integer :level
 
       t.timestamps
     end

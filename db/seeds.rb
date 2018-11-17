@@ -17,7 +17,7 @@ puts "Creating friends for finding and fighting..."
 
 
 
-2.times do
+3.times do
 user = User.new(
   email: Faker::Internet.free_email,
   password: "ffriends",
@@ -81,7 +81,7 @@ arenac = Arena.new(
   latitude: 40.7128,
   longitude: 74.0060
   )
-  arenacremote_picture_url =  Cloudinary::Uploader.upload('https://2.bp.blogspot.com/-3djK1nxKrh8/WTSY0pJUMiI/AAAAAAAAS_M/ohLUIO9-kzA1wIyGCPtC68krEJfWmRpfACLcB/s1600/Game-of-Thrones-Kings-Landing.jpg')['url']
+  arenac.remote_picture_url =  Cloudinary::Uploader.upload('https://2.bp.blogspot.com/-3djK1nxKrh8/WTSY0pJUMiI/AAAAAAAAS_M/ohLUIO9-kzA1wIyGCPtC68krEJfWmRpfACLcB/s1600/Game-of-Thrones-Kings-Landing.jpg')['url']
   arenac.save!
 
 arenae = Arena.new(
@@ -97,6 +97,6 @@ arenad = Arena.new(
   latitude: 31.0461,
   longitude: 34.8516
   )
-  arenadremote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
+  arenad.remote_picture_url =  Cloudinary::Uploader.upload('https://vignette.wikia.nocookie.net/hieloyfuego/images/c/c1/Volantis_HBO.jpg/revision/latest?cb=20150427113329')['url']
   arenad.save!
 
